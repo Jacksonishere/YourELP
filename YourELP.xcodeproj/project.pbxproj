@@ -16,7 +16,6 @@
 		36B9F826262F6E460010BFCD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9F825262F6E460010BFCD /* SceneDelegate.swift */; };
 		36B9F828262F6E460010BFCD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9F827262F6E460010BFCD /* SearchViewController.swift */; };
 		36B9F82B262F6E460010BFCD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B9F829262F6E460010BFCD /* Main.storyboard */; };
-		36B9F82E262F6E460010BFCD /* iOSProj.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36B9F82C262F6E460010BFCD /* iOSProj.xcdatamodeld */; };
 		36B9F830262F6E4A0010BFCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B9F82F262F6E4A0010BFCD /* Assets.xcassets */; };
 		36B9F833262F6E4A0010BFCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B9F831262F6E4A0010BFCD /* LaunchScreen.storyboard */; };
 		36BFC6262630EEC000D70D60 /* YelpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BFC6252630EEC000D70D60 /* YelpResult.swift */; };
@@ -28,12 +27,11 @@
 		366954B8263904AB00A71D6C /* yelpStars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yelpStars.swift; sourceTree = "<group>"; };
 		366954BE2639F7A500A71D6C /* String+AppendStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AppendStrings.swift"; sourceTree = "<group>"; };
 		366954C2263A1E8600A71D6C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		36B9F820262F6E460010BFCD /* iOSProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		36B9F820262F6E460010BFCD /* YourELP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourELP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B9F823262F6E460010BFCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36B9F825262F6E460010BFCD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		36B9F827262F6E460010BFCD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		36B9F82A262F6E460010BFCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		36B9F82D262F6E460010BFCD /* iOSProj.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSProj.xcdatamodel; sourceTree = "<group>"; };
 		36B9F82F262F6E4A0010BFCD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36B9F832262F6E4A0010BFCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36B9F834262F6E4A0010BFCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -62,7 +60,7 @@
 		36B9F817262F6E460010BFCD = {
 			isa = PBXGroup;
 			children = (
-				36B9F822262F6E460010BFCD /* iOSProj */,
+				36B9F822262F6E460010BFCD /* YourELP */,
 				36B9F821262F6E460010BFCD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,12 +68,12 @@
 		36B9F821262F6E460010BFCD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				36B9F820262F6E460010BFCD /* iOSProj.app */,
+				36B9F820262F6E460010BFCD /* YourELP.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		36B9F822262F6E460010BFCD /* iOSProj */ = {
+		36B9F822262F6E460010BFCD /* YourELP */ = {
 			isa = PBXGroup;
 			children = (
 				366954B02638D79F00A71D6C /* TableViewCells */,
@@ -88,13 +86,12 @@
 				36B9F829262F6E460010BFCD /* Main.storyboard */,
 				36B9F831262F6E4A0010BFCD /* LaunchScreen.storyboard */,
 				36B9F834262F6E4A0010BFCD /* Info.plist */,
-				36B9F82C262F6E460010BFCD /* iOSProj.xcdatamodeld */,
 				366954B42638DEE300A71D6C /* UIImageView+DownloadImage.swift */,
 				366954B8263904AB00A71D6C /* yelpStars.swift */,
 				366954BE2639F7A500A71D6C /* String+AppendStrings.swift */,
 				366954C2263A1E8600A71D6C /* MapViewController.swift */,
 			);
-			path = iOSProj;
+			path = YourELP;
 			sourceTree = "<group>";
 		};
 		36BFC61F2630D2D600D70D60 /* Network */ = {
@@ -107,9 +104,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		36B9F81F262F6E460010BFCD /* iOSProj */ = {
+		36B9F81F262F6E460010BFCD /* YourELP */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 36B9F837262F6E4A0010BFCD /* Build configuration list for PBXNativeTarget "iOSProj" */;
+			buildConfigurationList = 36B9F837262F6E4A0010BFCD /* Build configuration list for PBXNativeTarget "YourELP" */;
 			buildPhases = (
 				36B9F81C262F6E460010BFCD /* Sources */,
 				36B9F81D262F6E460010BFCD /* Frameworks */,
@@ -119,9 +116,9 @@
 			);
 			dependencies = (
 			);
-			name = iOSProj;
+			name = YourELP;
 			productName = iOSProj;
-			productReference = 36B9F820262F6E460010BFCD /* iOSProj.app */;
+			productReference = 36B9F820262F6E460010BFCD /* YourELP.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,7 +135,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 36B9F81B262F6E460010BFCD /* Build configuration list for PBXProject "iOSProj" */;
+			buildConfigurationList = 36B9F81B262F6E460010BFCD /* Build configuration list for PBXProject "YourELP" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -151,7 +148,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				36B9F81F262F6E460010BFCD /* iOSProj */,
+				36B9F81F262F6E460010BFCD /* YourELP */,
 			);
 		};
 /* End PBXProject section */
@@ -181,7 +178,6 @@
 				366954BF2639F7A500A71D6C /* String+AppendStrings.swift in Sources */,
 				36B9F824262F6E460010BFCD /* AppDelegate.swift in Sources */,
 				36BFC6262630EEC000D70D60 /* YelpResult.swift in Sources */,
-				36B9F82E262F6E460010BFCD /* iOSProj.xcdatamodeld in Sources */,
 				36B9F826262F6E460010BFCD /* SceneDelegate.swift in Sources */,
 				366954B22638D7B500A71D6C /* BusinessResultCell.swift in Sources */,
 			);
@@ -332,7 +328,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HRR4MZ37J7;
-				INFOPLIST_FILE = iOSProj/Info.plist;
+				INFOPLIST_FILE = YourELP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -351,7 +347,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HRR4MZ37J7;
-				INFOPLIST_FILE = iOSProj/Info.plist;
+				INFOPLIST_FILE = YourELP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -366,7 +362,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		36B9F81B262F6E460010BFCD /* Build configuration list for PBXProject "iOSProj" */ = {
+		36B9F81B262F6E460010BFCD /* Build configuration list for PBXProject "YourELP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				36B9F835262F6E4A0010BFCD /* Debug */,
@@ -375,7 +371,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		36B9F837262F6E4A0010BFCD /* Build configuration list for PBXNativeTarget "iOSProj" */ = {
+		36B9F837262F6E4A0010BFCD /* Build configuration list for PBXNativeTarget "YourELP" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				36B9F838262F6E4A0010BFCD /* Debug */,
@@ -385,19 +381,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		36B9F82C262F6E460010BFCD /* iOSProj.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				36B9F82D262F6E460010BFCD /* iOSProj.xcdatamodel */,
-			);
-			currentVersion = 36B9F82D262F6E460010BFCD /* iOSProj.xcdatamodel */;
-			path = iOSProj.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 36B9F818262F6E460010BFCD /* Project object */;
 }

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "36B9F81F262F6E460010BFCD"
-               BuildableName = "iOSProj.app"
-               BlueprintName = "iOSProj"
-               ReferencedContainer = "container:iOSProj.xcodeproj">
+               BuildableName = "YourELP.app"
+               BlueprintName = "YourELP"
+               ReferencedContainer = "container:YourELP.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "36B9F81F262F6E460010BFCD"
-            BuildableName = "iOSProj.app"
-            BlueprintName = "iOSProj"
-            ReferencedContainer = "container:iOSProj.xcodeproj">
+            BuildableName = "YourELP.app"
+            BlueprintName = "YourELP"
+            ReferencedContainer = "container:YourELP.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <LocationScenarioReference
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "36B9F81F262F6E460010BFCD"
-            BuildableName = "iOSProj.app"
-            BlueprintName = "iOSProj"
-            ReferencedContainer = "container:iOSProj.xcodeproj">
+            BuildableName = "YourELP.app"
+            BlueprintName = "YourELP"
+            ReferencedContainer = "container:YourELP.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
