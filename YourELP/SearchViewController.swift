@@ -30,7 +30,6 @@ class SearchViewController: UIViewController {
         let encodedAddress = address.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
         //right now urlstring brighton beach but will change
         let urlString = "https://api.yelp.com/v3/businesses/search?term=\(encodedBusiness)&location=\(encodedAddress)"
-        print(urlString, "url string")
         let url = URL(string: urlString)
         return url!
     }
@@ -106,7 +105,6 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isLoading {
-            print("currently loading")
             return 1
         }
         else if !hasSearched {

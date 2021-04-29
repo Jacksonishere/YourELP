@@ -12,6 +12,8 @@
 		366954B9263904AB00A71D6C /* yelpStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366954B8263904AB00A71D6C /* yelpStars.swift */; };
 		366954BF2639F7A500A71D6C /* String+AppendStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366954BE2639F7A500A71D6C /* String+AppendStrings.swift */; };
 		366954C3263A1E8600A71D6C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366954C2263A1E8600A71D6C /* MapViewController.swift */; };
+		36B64181263B47AD006620AC /* ReviewResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B64180263B47AD006620AC /* ReviewResultCell.swift */; };
+		36B64184263B6548006620AC /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B64183263B6548006620AC /* MapCell.swift */; };
 		36B9F824262F6E460010BFCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9F823262F6E460010BFCD /* AppDelegate.swift */; };
 		36B9F826262F6E460010BFCD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9F825262F6E460010BFCD /* SceneDelegate.swift */; };
 		36B9F828262F6E460010BFCD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9F827262F6E460010BFCD /* SearchViewController.swift */; };
@@ -19,6 +21,7 @@
 		36B9F830262F6E4A0010BFCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B9F82F262F6E4A0010BFCD /* Assets.xcassets */; };
 		36B9F833262F6E4A0010BFCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B9F831262F6E4A0010BFCD /* LaunchScreen.storyboard */; };
 		36BFC6262630EEC000D70D60 /* YelpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BFC6252630EEC000D70D60 /* YelpResult.swift */; };
+		36EAE993263B3B3400CBE716 /* YelpReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAE992263B3B3400CBE716 /* YelpReview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,8 @@
 		366954B8263904AB00A71D6C /* yelpStars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yelpStars.swift; sourceTree = "<group>"; };
 		366954BE2639F7A500A71D6C /* String+AppendStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AppendStrings.swift"; sourceTree = "<group>"; };
 		366954C2263A1E8600A71D6C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		36B64180263B47AD006620AC /* ReviewResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResultCell.swift; sourceTree = "<group>"; };
+		36B64183263B6548006620AC /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		36B9F820262F6E460010BFCD /* YourELP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourELP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B9F823262F6E460010BFCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36B9F825262F6E460010BFCD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +41,7 @@
 		36B9F832262F6E4A0010BFCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36B9F834262F6E4A0010BFCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36BFC6252630EEC000D70D60 /* YelpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpResult.swift; sourceTree = "<group>"; };
+		36EAE992263B3B3400CBE716 /* YelpReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpReview.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				366954B12638D7B500A71D6C /* BusinessResultCell.swift */,
+				36B64180263B47AD006620AC /* ReviewResultCell.swift */,
+				36B64183263B6548006620AC /* MapCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -77,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				366954B02638D79F00A71D6C /* TableViewCells */,
-				36BFC61F2630D2D600D70D60 /* Network */,
 				36B9F823262F6E460010BFCD /* AppDelegate.swift */,
 				36B9F825262F6E460010BFCD /* SceneDelegate.swift */,
 				36B9F82F262F6E4A0010BFCD /* Assets.xcassets */,
@@ -90,15 +97,9 @@
 				366954B8263904AB00A71D6C /* yelpStars.swift */,
 				366954BE2639F7A500A71D6C /* String+AppendStrings.swift */,
 				366954C2263A1E8600A71D6C /* MapViewController.swift */,
+				36EAE992263B3B3400CBE716 /* YelpReview.swift */,
 			);
 			path = YourELP;
-			sourceTree = "<group>";
-		};
-		36BFC61F2630D2D600D70D60 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,11 +173,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				366954B52638DEE300A71D6C /* UIImageView+DownloadImage.swift in Sources */,
+				36EAE993263B3B3400CBE716 /* YelpReview.swift in Sources */,
+				36B64184263B6548006620AC /* MapCell.swift in Sources */,
 				366954B9263904AB00A71D6C /* yelpStars.swift in Sources */,
 				36B9F828262F6E460010BFCD /* SearchViewController.swift in Sources */,
 				366954C3263A1E8600A71D6C /* MapViewController.swift in Sources */,
 				366954BF2639F7A500A71D6C /* String+AppendStrings.swift in Sources */,
 				36B9F824262F6E460010BFCD /* AppDelegate.swift in Sources */,
+				36B64181263B47AD006620AC /* ReviewResultCell.swift in Sources */,
 				36BFC6262630EEC000D70D60 /* YelpResult.swift in Sources */,
 				36B9F826262F6E460010BFCD /* SceneDelegate.swift in Sources */,
 				366954B22638D7B500A71D6C /* BusinessResultCell.swift in Sources */,

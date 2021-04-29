@@ -15,4 +15,10 @@ extension String{
             }
         }
     }
+    
+    mutating func getTimeStamp(fixTimestamp: String){
+        var dateSplit = self.components(separatedBy: "-")
+        dateSplit[2].removeLast(dateSplit[2].count - 2)
+        self = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0]
+    }
 }
