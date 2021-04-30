@@ -1,0 +1,20 @@
+PODS:
+  - Cosmos (23.0.0)
+  - ImagePicker (3.2.0)
+
+DEPENDENCIES:
+  - Cosmos
+  - ImagePicker
+
+SPEC REPOS:
+  trunk:
+    - Cosmos
+    - ImagePicker
+
+SPEC CHECKSUMS:
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
+  ImagePicker: 1d950bbb2422548ed58791b4ec7f42fe42920511
+
+PODFILE CHECKSUM: 829d6006498e3d04afa1ed5e7278c39cd93025ff
+
+COCOAPODS: 1.10.1

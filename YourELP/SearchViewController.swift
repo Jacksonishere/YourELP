@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     
+    var managedObjectContext: NSManagedObjectContext!
     var businessResults = [Business]()
     var hasSearched = false
     var isLoading = false
@@ -20,6 +22,8 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.becomeFirstResponder()
+        
+        print(applicationDocumentsDirectory, "this app dir")
         
     }
     

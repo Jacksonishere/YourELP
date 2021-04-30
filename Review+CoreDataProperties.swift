@@ -19,6 +19,6 @@ extension Review {
     @NSManaged public var restName: String?
     @NSManaged public var rating: Double
     @NSManaged public var reviewDesc: String?
-    @NSManaged public var photoIDs: Array<NSNumber>?
+    @NSManaged public var photoIDs: [NSNumber]?
 
 }

@@ -93,13 +93,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="p73-Jb-UaA">
                                                     <rect key="frame" x="159.5" y="12" width="95.5" height="20"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7b-4s-Mia">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7b-4s-Mia">
                                                             <rect key="frame" x="0.0" y="0.0" width="67.5" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" name="ArtistName"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ROz-f5-3UW">
+                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ROz-f5-3UW">
                                                             <rect key="frame" x="75.5" y="0.0" width="20" height="20"/>
                                                         </activityIndicatorView>
                                                     </subviews>
@@ -272,13 +272,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dUk-l2-Qkr">
                                                     <rect key="frame" x="159.5" y="12" width="95.5" height="20"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcW-XR-xIm">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcW-XR-xIm">
                                                             <rect key="frame" x="0.0" y="0.0" width="67.5" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" name="ArtistName"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="eyv-fc-ThA">
+                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="eyv-fc-ThA">
                                                             <rect key="frame" x="75.5" y="0.0" width="20" height="20"/>
                                                         </activityIndicatorView>
                                                     </subviews>
@@ -375,9 +375,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abJ-Cr-i7P">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abJ-Cr-i7P" userLabel="Add review">
                                                     <rect key="frame" x="372" y="19.5" width="22" height="20"/>
                                                     <state key="normal" backgroundImage="star" catalog="system"/>
+                                                    <connections>
+                                                        <segue destination="P9S-e4-yW5" kind="show" id="HHv-ov-s5d"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -420,6 +423,81 @@
             </objects>
             <point key="canvasLocation" x="102.89855072463769" y="2243.9732142857142"/>
         </scene>
+        <!--Add Your Review-->
+        <scene sceneID="PLA-Q5-JVX">
+            <objects>
+                <viewController id="P9S-e4-yW5" customClass="AddReviewViewController" customModule="YourELP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KW3-Pq-f1p">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Business Name:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhI-Ty-JvF">
+                                <rect key="frame" x="20" y="108" width="374" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EdG-Ex-hnB" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="20" y="146" width="120" height="20"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Glg-yv-xp7">
+                                <rect key="frame" x="20" y="174" width="374" height="210"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="bFF-99-oWB"/>
+                                </constraints>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="P9S-e4-yW5" id="3HX-YU-dVu"/>
+                                </connections>
+                            </textView>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dIe-uI-F9f">
+                                <rect key="frame" x="20" y="403" width="374" height="22"/>
+                                <state key="normal" image="camera" catalog="system"/>
+                                <connections>
+                                    <action selector="pickImage:" destination="P9S-e4-yW5" eventType="touchUpInside" id="r7C-ck-fBo"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="hD6-li-qC8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EdG-Ex-hnB" firstAttribute="leading" secondItem="hD6-li-qC8" secondAttribute="leading" constant="20" id="Gh4-Vy-BGC"/>
+                            <constraint firstItem="nhI-Ty-JvF" firstAttribute="leading" secondItem="hD6-li-qC8" secondAttribute="leading" constant="20" id="Mnc-FP-F9C"/>
+                            <constraint firstItem="dIe-uI-F9f" firstAttribute="top" secondItem="Glg-yv-xp7" secondAttribute="bottom" constant="19" id="P2h-pk-D6t"/>
+                            <constraint firstItem="nhI-Ty-JvF" firstAttribute="top" secondItem="hD6-li-qC8" secondAttribute="top" constant="20" id="WOV-GT-l5c"/>
+                            <constraint firstItem="Glg-yv-xp7" firstAttribute="leading" secondItem="dIe-uI-F9f" secondAttribute="leading" id="bpr-oA-XgI"/>
+                            <constraint firstItem="Glg-yv-xp7" firstAttribute="leading" secondItem="hD6-li-qC8" secondAttribute="leading" constant="20" id="gUt-xV-IL9"/>
+                            <constraint firstItem="EdG-Ex-hnB" firstAttribute="top" secondItem="nhI-Ty-JvF" secondAttribute="bottom" constant="8" id="r8J-8W-DFf"/>
+                            <constraint firstItem="hD6-li-qC8" firstAttribute="trailing" secondItem="Glg-yv-xp7" secondAttribute="trailing" constant="20" id="rmX-Di-ZfN"/>
+                            <constraint firstItem="Glg-yv-xp7" firstAttribute="trailing" secondItem="dIe-uI-F9f" secondAttribute="trailing" id="vnS-qd-lcB"/>
+                            <constraint firstItem="hD6-li-qC8" firstAttribute="trailing" secondItem="nhI-Ty-JvF" secondAttribute="trailing" constant="20" id="wZp-5X-yJC"/>
+                            <constraint firstItem="Glg-yv-xp7" firstAttribute="top" secondItem="EdG-Ex-hnB" secondAttribute="bottom" constant="8" id="x6X-IK-4SZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Your Review" largeTitleDisplayMode="never" id="iC2-TA-pgM">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="oW1-pP-i4p">
+                            <connections>
+                                <action selector="cancel:" destination="P9S-e4-yW5" id="k9B-Mf-pnm"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="abW-9l-FTs"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addImageButton" destination="dIe-uI-F9f" id="zTt-4Z-TdJ"/>
+                        <outlet property="businessLabel" destination="nhI-Ty-JvF" id="IvO-Qj-Rs1"/>
+                        <outlet property="cosmoView" destination="EdG-Ex-hnB" id="uso-XR-Vmc"/>
+                        <outlet property="descView" destination="Glg-yv-xp7" id="3o5-e4-XQ0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DtS-M5-xDL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1028.985507246377" y="2243.9732142857142"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="v0D-MY-YbG">
             <objects>
@@ -432,7 +510,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="TiX-L1-O7b" kind="relationship" relationship="viewControllers" id="FqH-Yo-HDD"/>
-                        <segue destination="MIX-ur-XVh" kind="relationship" relationship="viewControllers" id="PrE-U9-rEa"/>
+                        <segue destination="FXy-vb-aCT" kind="relationship" relationship="viewControllers" id="PrE-U9-rEa"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dc2-ch-Gd0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -458,16 +536,16 @@
             </objects>
             <point key="canvasLocation" x="102.89855072463769" y="837.72321428571422"/>
         </scene>
-        <!--My Reviews-->
+        <!--My Reviews View Controller-->
         <scene sceneID="r7G-0h-pSx">
             <objects>
-                <viewController id="MIX-ur-XVh" sceneMemberID="viewController">
+                <viewController id="MIX-ur-XVh" customClass="MyReviewsViewController" customModule="YourELP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WDW-nU-Lun">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N4f-bF-AVO">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RestaurantCell" id="c8u-fI-cql" customClass="RestaurantCell" customModule="YourELP" customModuleProvider="target">
@@ -570,11 +648,11 @@
                             <constraint firstItem="N4f-bF-AVO" firstAttribute="top" secondItem="v7J-dW-tHM" secondAttribute="top" id="gl3-fp-Vh7"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My Reviews" image="star.fill" catalog="system" id="Xfk-3t-tz4"/>
+                    <navigationItem key="navigationItem" id="poZ-L5-VPZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jk6-en-ySR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1813" y="838"/>
+            <point key="canvasLocation" x="1812" y="1544"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="bCT-8L-kx1">
@@ -589,16 +667,44 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7OV-B4-erb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1812" y="1544"/>
+            <point key="canvasLocation" x="1812" y="2244"/>
+        </scene>
+        <!--My Reviews-->
+        <scene sceneID="C3Z-dm-Mbf">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FXy-vb-aCT" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Reviews" image="star.fill" catalog="system" id="Xfk-3t-tz4"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="M63-a5-T80">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="MIX-ur-XVh" kind="relationship" relationship="rootViewController" id="v8o-ts-eU2"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oau-j4-duq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1811.594202898551" y="837.72321428571422"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="EdG-Ex-hnB">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+    </designables>
     <resources>
+        <image name="camera" catalog="system" width="128" height="94"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="star" catalog="system" width="128" height="116"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <namedColor name="ArtistName">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

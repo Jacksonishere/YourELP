@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,10 @@
 		366954C3263A1E8600A71D6C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366954C2263A1E8600A71D6C /* MapViewController.swift */; };
 		36B64181263B47AD006620AC /* ReviewResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B64180263B47AD006620AC /* ReviewResultCell.swift */; };
 		36B64184263B6548006620AC /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B64183263B6548006620AC /* MapCell.swift */; };
+		36B6418A263BA387006620AC /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B64189263BA387006620AC /* AddReviewViewController.swift */; };
+		36B6418E263C588E006620AC /* SelfReviews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36B6418C263C588E006620AC /* SelfReviews.xcdatamodeld */; };
+		36B64191263C5B1C006620AC /* globalFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B64190263C5B1C006620AC /* globalFuncs.swift */; };
+		36B64199263C6F36006620AC /* MyReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B64198263C6F36006620AC /* MyReviewsViewController.swift */; };
 		36B9F824262F6E460010BFCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9F823262F6E460010BFCD /* AppDelegate.swift */; };
 		36B9F826262F6E460010BFCD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9F825262F6E460010BFCD /* SceneDelegate.swift */; };
 		36B9F828262F6E460010BFCD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9F827262F6E460010BFCD /* SearchViewController.swift */; };
@@ -22,9 +26,11 @@
 		36B9F833262F6E4A0010BFCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36B9F831262F6E4A0010BFCD /* LaunchScreen.storyboard */; };
 		36BFC6262630EEC000D70D60 /* YelpResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BFC6252630EEC000D70D60 /* YelpResult.swift */; };
 		36EAE993263B3B3400CBE716 /* YelpReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EAE992263B3B3400CBE716 /* YelpReview.swift */; };
+		6AD9A9B68D44A3D38E0539C7 /* Pods_YourELP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CD445B6D6E197A37A329433 /* Pods_YourELP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12A70B53793F1D4B5C5241D2 /* Pods-YourELP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourELP.debug.xcconfig"; path = "Target Support Files/Pods-YourELP/Pods-YourELP.debug.xcconfig"; sourceTree = "<group>"; };
 		366954B12638D7B500A71D6C /* BusinessResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessResultCell.swift; sourceTree = "<group>"; };
 		366954B42638DEE300A71D6C /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		366954B8263904AB00A71D6C /* yelpStars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yelpStars.swift; sourceTree = "<group>"; };
@@ -32,6 +38,10 @@
 		366954C2263A1E8600A71D6C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		36B64180263B47AD006620AC /* ReviewResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResultCell.swift; sourceTree = "<group>"; };
 		36B64183263B6548006620AC /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
+		36B64189263BA387006620AC /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
+		36B6418D263C588E006620AC /* SelfReviews.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SelfReviews.xcdatamodel; sourceTree = "<group>"; };
+		36B64190263C5B1C006620AC /* globalFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globalFuncs.swift; sourceTree = "<group>"; };
+		36B64198263C6F36006620AC /* MyReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewsViewController.swift; sourceTree = "<group>"; };
 		36B9F820262F6E460010BFCD /* YourELP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourELP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B9F823262F6E460010BFCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36B9F825262F6E460010BFCD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +52,8 @@
 		36B9F834262F6E4A0010BFCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36BFC6252630EEC000D70D60 /* YelpResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpResult.swift; sourceTree = "<group>"; };
 		36EAE992263B3B3400CBE716 /* YelpReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpReview.swift; sourceTree = "<group>"; };
+		9CD445B6D6E197A37A329433 /* Pods_YourELP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YourELP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE198B2B92AD394DFC4AADFB /* Pods-YourELP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourELP.release.xcconfig"; path = "Target Support Files/Pods-YourELP/Pods-YourELP.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD9A9B68D44A3D38E0539C7 /* Pods_YourELP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +83,8 @@
 			children = (
 				36B9F822262F6E460010BFCD /* YourELP */,
 				36B9F821262F6E460010BFCD /* Products */,
+				8E00920B346501680701692A /* Pods */,
+				E8567F677003A96565F82BEE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,8 +113,29 @@
 				366954BE2639F7A500A71D6C /* String+AppendStrings.swift */,
 				366954C2263A1E8600A71D6C /* MapViewController.swift */,
 				36EAE992263B3B3400CBE716 /* YelpReview.swift */,
+				36B64189263BA387006620AC /* AddReviewViewController.swift */,
+				36B6418C263C588E006620AC /* SelfReviews.xcdatamodeld */,
+				36B64190263C5B1C006620AC /* globalFuncs.swift */,
+				36B64198263C6F36006620AC /* MyReviewsViewController.swift */,
 			);
 			path = YourELP;
+			sourceTree = "<group>";
+		};
+		8E00920B346501680701692A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				12A70B53793F1D4B5C5241D2 /* Pods-YourELP.debug.xcconfig */,
+				EE198B2B92AD394DFC4AADFB /* Pods-YourELP.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E8567F677003A96565F82BEE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9CD445B6D6E197A37A329433 /* Pods_YourELP.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36B9F837262F6E4A0010BFCD /* Build configuration list for PBXNativeTarget "YourELP" */;
 			buildPhases = (
+				80CF85C06C323E388A6420C5 /* [CP] Check Pods Manifest.lock */,
 				36B9F81C262F6E460010BFCD /* Sources */,
 				36B9F81D262F6E460010BFCD /* Frameworks */,
 				36B9F81E262F6E460010BFCD /* Resources */,
+				EE7A6C68044CDAE4C2811225 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -167,6 +205,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		80CF85C06C323E388A6420C5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-YourELP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE7A6C68044CDAE4C2811225 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YourELP/Pods-YourELP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-YourELP/Pods-YourELP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YourELP/Pods-YourELP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		36B9F81C262F6E460010BFCD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -174,11 +254,15 @@
 			files = (
 				366954B52638DEE300A71D6C /* UIImageView+DownloadImage.swift in Sources */,
 				36EAE993263B3B3400CBE716 /* YelpReview.swift in Sources */,
+				36B64199263C6F36006620AC /* MyReviewsViewController.swift in Sources */,
 				36B64184263B6548006620AC /* MapCell.swift in Sources */,
 				366954B9263904AB00A71D6C /* yelpStars.swift in Sources */,
 				36B9F828262F6E460010BFCD /* SearchViewController.swift in Sources */,
+				36B6418E263C588E006620AC /* SelfReviews.xcdatamodeld in Sources */,
 				366954C3263A1E8600A71D6C /* MapViewController.swift in Sources */,
 				366954BF2639F7A500A71D6C /* String+AppendStrings.swift in Sources */,
+				36B6418A263BA387006620AC /* AddReviewViewController.swift in Sources */,
+				36B64191263C5B1C006620AC /* globalFuncs.swift in Sources */,
 				36B9F824262F6E460010BFCD /* AppDelegate.swift in Sources */,
 				36B64181263B47AD006620AC /* ReviewResultCell.swift in Sources */,
 				36BFC6262630EEC000D70D60 /* YelpResult.swift in Sources */,
@@ -327,6 +411,7 @@
 		};
 		36B9F838262F6E4A0010BFCD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12A70B53793F1D4B5C5241D2 /* Pods-YourELP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -346,6 +431,7 @@
 		};
 		36B9F839262F6E4A0010BFCD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE198B2B92AD394DFC4AADFB /* Pods-YourELP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -385,6 +471,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		36B6418C263C588E006620AC /* SelfReviews.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				36B6418D263C588E006620AC /* SelfReviews.xcdatamodel */,
+			);
+			currentVersion = 36B6418D263C588E006620AC /* SelfReviews.xcdatamodel */;
+			path = SelfReviews.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 36B9F818262F6E460010BFCD /* Project object */;
 }

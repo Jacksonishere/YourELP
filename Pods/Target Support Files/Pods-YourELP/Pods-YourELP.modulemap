@@ -1,0 +1,6 @@
+framework module Pods_YourELP {
+  umbrella header "Pods-YourELP-umbrella.h"
+
+  export *
+  module * { export * }
+}
