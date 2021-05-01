@@ -75,14 +75,16 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         cosmoView.settings.fillMode = .full
         cosmoView.rating = userRating
         
-        cosmoView.didTouchCosmos = { rating in
-            self.userRating = rating
+        cosmoView.didTouchCosmos = { [weak self] rating in
+            self!.userRating = rating
 //            print(rating, "user selected rating")
         }
         businessLabel.text = businessName
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
         self.view.addGestureRecognizer(tapGesture)
+        
+        
     }
     
     @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
@@ -92,7 +94,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
     @IBAction func cancel(_ sender: Any) {
         if selectedImages != nil{ selectedImages = nil}
         if editReviewImages != nil{ editReviewImages = nil}
-        collectionView = nil
+        view.gestureRecognizers?.removeAll()
         navigationController?.popViewController(animated: true)
     }
     
@@ -223,11 +225,11 @@ extension AddReviewViewController: UICollectionViewDelegate, UICollectionViewDat
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! photoCell
             if didSelectImages{
-                cell.photoView.image = selectedImages![indexPath.row - 1]
+                cell.configure(forImage: selectedImages![indexPath.row - 1])
                 return cell
             }
             else{
-                cell.photoView.image = editReviewImages![indexPath.row - 1]
+                cell.configure(forImage: editReviewImages![indexPath.row - 1])
                 return cell
             }
         }
@@ -240,6 +242,18 @@ extension AddReviewViewController: UICollectionViewDelegate, UICollectionViewDat
         }
         else{
             return CGSize(width: 128, height: 128)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print("did end displaying called")
+        if indexPath.row == 0{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addImageButtonCell", for: indexPath) as! addImageButtonCell
+            cell.delegate = nil
+        }
+        else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! photoCell
+            cell.photoView.image = nil
         }
     }
     
