@@ -7,10 +7,12 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class MapViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var managedObjectContext: NSManagedObjectContext!
     
     var business:Business!
     var reviewsResultArray = [review]()
@@ -21,17 +23,8 @@ class MapViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-//        mapView.addAnnotation(business.coordinates)
-//        zoomInToBusiness()
         performSearch()
     }
-        
-//    func zoomInToBusiness(){
-//        let region = MKCoordinateRegion(
-//            center: business.coordinates.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
-//        mapView.setRegion(mapView.regionThatFits(region), animated: true)
-//    }
-    
     
     func yelpURL() -> URL {
         let urlString = "https://api.yelp.com/v3/businesses/\(business.id)/reviews"
@@ -93,6 +86,14 @@ class MapViewController: UIViewController {
             }
         }
         dataTask?.resume()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "addReview"{
+            let vc = segue.destination as! AddReviewViewController
+            vc.managedObjectContext = managedObjectContext
+            vc.businessName = business.name
+        }
     }
 }
 

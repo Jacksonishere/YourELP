@@ -147,9 +147,10 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMap"{
-            let viewcontroller = segue.destination as! MapViewController
+            let vc = segue.destination as! MapViewController
             let locationNum = sender as! Int
-            viewcontroller.business = businessResults[locationNum]
+            vc.business = businessResults[locationNum]
+            vc.managedObjectContext = managedObjectContext
         }
     }
 }

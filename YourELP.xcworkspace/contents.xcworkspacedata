@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Review+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Review+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:YourELP.xcodeproj">
    </FileRef>
    <FileRef

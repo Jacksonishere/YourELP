@@ -18,6 +18,11 @@
 		36B6418E263C588E006620AC /* SelfReviews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 36B6418C263C588E006620AC /* SelfReviews.xcdatamodeld */; };
 		36B64191263C5B1C006620AC /* globalFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B64190263C5B1C006620AC /* globalFuncs.swift */; };
 		36B64199263C6F36006620AC /* MyReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B64198263C6F36006620AC /* MyReviewsViewController.swift */; };
+		36B6419C263C81AF006620AC /* HudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B6419B263C81AF006620AC /* HudView.swift */; };
+		36B641C1263C9D88006620AC /* Review+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B641BF263C9D88006620AC /* Review+CoreDataClass.swift */; };
+		36B641C2263C9D88006620AC /* Review+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B641C0263C9D88006620AC /* Review+CoreDataProperties.swift */; };
+		36B641CB263CEB41006620AC /* photoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B641CA263CEB41006620AC /* photoCell.swift */; };
+		36B641CF263CFA2A006620AC /* addImageButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B641CE263CFA2A006620AC /* addImageButtonCell.swift */; };
 		36B9F824262F6E460010BFCD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9F823262F6E460010BFCD /* AppDelegate.swift */; };
 		36B9F826262F6E460010BFCD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9F825262F6E460010BFCD /* SceneDelegate.swift */; };
 		36B9F828262F6E460010BFCD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B9F827262F6E460010BFCD /* SearchViewController.swift */; };
@@ -42,6 +47,11 @@
 		36B6418D263C588E006620AC /* SelfReviews.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SelfReviews.xcdatamodel; sourceTree = "<group>"; };
 		36B64190263C5B1C006620AC /* globalFuncs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = globalFuncs.swift; sourceTree = "<group>"; };
 		36B64198263C6F36006620AC /* MyReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewsViewController.swift; sourceTree = "<group>"; };
+		36B6419B263C81AF006620AC /* HudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudView.swift; sourceTree = "<group>"; };
+		36B641BF263C9D88006620AC /* Review+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Review+CoreDataClass.swift"; sourceTree = "<group>"; };
+		36B641C0263C9D88006620AC /* Review+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Review+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		36B641CA263CEB41006620AC /* photoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoCell.swift; sourceTree = "<group>"; };
+		36B641CE263CFA2A006620AC /* addImageButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addImageButtonCell.swift; sourceTree = "<group>"; };
 		36B9F820262F6E460010BFCD /* YourELP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YourELP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36B9F823262F6E460010BFCD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36B9F825262F6E460010BFCD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,9 +88,18 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
+		36B641C4263CEA70006620AC /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 		36B9F817262F6E460010BFCD = {
 			isa = PBXGroup;
 			children = (
+				36B641BF263C9D88006620AC /* Review+CoreDataClass.swift */,
+				36B641C0263C9D88006620AC /* Review+CoreDataProperties.swift */,
 				36B9F822262F6E460010BFCD /* YourELP */,
 				36B9F821262F6E460010BFCD /* Products */,
 				8E00920B346501680701692A /* Pods */,
@@ -99,6 +118,7 @@
 		36B9F822262F6E460010BFCD /* YourELP */ = {
 			isa = PBXGroup;
 			children = (
+				36B641C4263CEA70006620AC /* CollectionViewCells */,
 				366954B02638D79F00A71D6C /* TableViewCells */,
 				36B9F823262F6E460010BFCD /* AppDelegate.swift */,
 				36B9F825262F6E460010BFCD /* SceneDelegate.swift */,
@@ -117,6 +137,9 @@
 				36B6418C263C588E006620AC /* SelfReviews.xcdatamodeld */,
 				36B64190263C5B1C006620AC /* globalFuncs.swift */,
 				36B64198263C6F36006620AC /* MyReviewsViewController.swift */,
+				36B6419B263C81AF006620AC /* HudView.swift */,
+				36B641CA263CEB41006620AC /* photoCell.swift */,
+				36B641CE263CFA2A006620AC /* addImageButtonCell.swift */,
 			);
 			path = YourELP;
 			sourceTree = "<group>";
@@ -252,6 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36B641CB263CEB41006620AC /* photoCell.swift in Sources */,
 				366954B52638DEE300A71D6C /* UIImageView+DownloadImage.swift in Sources */,
 				36EAE993263B3B3400CBE716 /* YelpReview.swift in Sources */,
 				36B64199263C6F36006620AC /* MyReviewsViewController.swift in Sources */,
@@ -261,13 +285,17 @@
 				36B6418E263C588E006620AC /* SelfReviews.xcdatamodeld in Sources */,
 				366954C3263A1E8600A71D6C /* MapViewController.swift in Sources */,
 				366954BF2639F7A500A71D6C /* String+AppendStrings.swift in Sources */,
+				36B641CF263CFA2A006620AC /* addImageButtonCell.swift in Sources */,
 				36B6418A263BA387006620AC /* AddReviewViewController.swift in Sources */,
 				36B64191263C5B1C006620AC /* globalFuncs.swift in Sources */,
 				36B9F824262F6E460010BFCD /* AppDelegate.swift in Sources */,
+				36B6419C263C81AF006620AC /* HudView.swift in Sources */,
 				36B64181263B47AD006620AC /* ReviewResultCell.swift in Sources */,
 				36BFC6262630EEC000D70D60 /* YelpResult.swift in Sources */,
 				36B9F826262F6E460010BFCD /* SceneDelegate.swift in Sources */,
 				366954B22638D7B500A71D6C /* BusinessResultCell.swift in Sources */,
+				36B641C1263C9D88006620AC /* Review+CoreDataClass.swift in Sources */,
+				36B641C2263C9D88006620AC /* Review+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

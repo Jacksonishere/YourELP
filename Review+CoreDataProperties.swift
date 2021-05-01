@@ -1,6 +1,6 @@
 //
 //  Review+CoreDataProperties.swift
-//  
+//  YourELP
 //
 //  Created by Jackson Lu on 4/30/21.
 //
@@ -16,9 +16,14 @@ extension Review {
         return NSFetchRequest<Review>(entityName: "Review")
     }
 
-    @NSManaged public var restName: String?
+    @NSManaged public var photoURLS: [String]?
+    @NSManaged public var photoIDBeginning: NSNumber?
     @NSManaged public var rating: Double
-    @NSManaged public var reviewDesc: String?
-    @NSManaged public var photoIDs: [NSNumber]?
+    @NSManaged public var restName: String
+    @NSManaged public var reviewDesc: String
+
+}
+
+extension Review : Identifiable {
 
 }
