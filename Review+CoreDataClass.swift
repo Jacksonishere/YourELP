@@ -34,10 +34,10 @@ public class Review: NSManagedObject {
         }
     }
     
-    class func nextPhotoIDBeginning(setNextBeg:Int) -> Int {
+    class func nextPhotoIDBeginning(numPhotos:Int) -> Int {
       let userDefaults = UserDefaults.standard
       let currentID = userDefaults.integer(forKey: "PhotoIDBeginning") + 1
-      userDefaults.set(currentID + setNextBeg, forKey: "PhotoIDBeginning")
+      userDefaults.set(currentID + numPhotos, forKey: "PhotoIDBeginning")
       return currentID
     }
 }

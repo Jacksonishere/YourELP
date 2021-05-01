@@ -125,6 +125,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         //if images were selected
         if let selectedImages = selectedImages{
             //already has photos and the num of selected photos the same, just overwrite.
+            //if its less than, we're gonna delete the last few images we didnt overwrite
             if let reviewPhotos = review.photoURLS{
                 if reviewPhotos.count <= selectedImages.count {
                     for i in 0 ..< selectedImages.count{
@@ -137,9 +138,9 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
                     for i in 0 ..< review.photoURLS!.count{
                         saveImage(withImage: selectedImages[i], forURL: URL(string: review.photoURLS![i])!)
                     }
-                    let photoIDBeg = Review.nextPhotoIDBeginning(setNextBeg: selectedImages.count)
-                    let currPhotosCount = review.photoURLS!.count
-                    for i in 0 ..< selectedImages.count - currPhotosCount{
+                    let diffNumPhotos = selectedImages.count - review.numPhotos
+                    let photoIDBeg = Review.nextPhotoIDBeginning(numPhotos: diffNumPhotos)
+                    for i in 0 ..< diffNumPhotos{
                         let filename = "Photo-\(photoIDBeg + i).jpg"
                         let dirPath = applicationDocumentsDirectory.appendingPathComponent(filename)
                         review.photoURLS!.append(dirPath.absoluteString)
@@ -149,7 +150,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
               
             }
             else{
-                let photoIDBeg = Review.nextPhotoIDBeginning(setNextBeg: selectedImages.count)
+                let photoIDBeg = Review.nextPhotoIDBeginning(numPhotos: selectedImages.count)
                 var stringURLs = [String]()
                 for i in 0 ..< selectedImages.count{
                     let filename = "Photo-\(photoIDBeg + i).jpg"
