@@ -58,7 +58,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
                     editReviewImages?.append(addImage!)
                 }
                 collectionView.reloadData()
-                businessName = review.restName
+                businessName = review.businessName
                 userRating = review.rating
                 descView.text = review.reviewDesc
             }
@@ -115,7 +115,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             review.photoURLS = nil
         }
         review.rating = userRating
-        review.restName = businessName
+        review.businessName = businessName
         review.reviewDesc = descView.text
         
         
@@ -158,7 +158,21 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
                     stringURLs.append(dirPath.absoluteString)
                     saveImage(withImage: selectedImages[i], forURL: dirPath)
                 }
+                print("string urls", stringURLs)
+                review.photoURLS = stringURLs
+                print("Review photo urls is now", review.photoURLS!)
             }
+        }
+        do {
+            print("about to save context and show delay")
+            try managedObjectContext.save()
+            afterDelay(0.6) {
+                hudView.hide()
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        catch {
+            fatalError("failed to save!")
         }
     }
     

@@ -17,9 +17,8 @@ extension Review {
     }
 
     @NSManaged public var photoURLS: [String]?
-    @NSManaged public var photoIDBeginning: NSNumber?
     @NSManaged public var rating: Double
-    @NSManaged public var restName: String
+    @NSManaged public var businessName: String
     @NSManaged public var reviewDesc: String
 
 }

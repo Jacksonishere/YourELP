@@ -27,6 +27,7 @@ class SearchViewController: UIViewController {
         
     }
     
+    
     func yelpURL(searchText: String) -> URL {
         print(searchText, "searched text")
         let encodedBusiness = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!

@@ -36,7 +36,7 @@ public class Review: NSManagedObject {
     
     class func nextPhotoIDBeginning(numPhotos:Int) -> Int {
       let userDefaults = UserDefaults.standard
-      let currentID = userDefaults.integer(forKey: "PhotoIDBeginning") + 1
+      let currentID = userDefaults.integer(forKey: "PhotoIDBeginning") 
       userDefaults.set(currentID + numPhotos, forKey: "PhotoIDBeginning")
       return currentID
     }
