@@ -154,17 +154,16 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             //if its less than, we're gonna delete the last few images we didnt overwrite
             let docDIR = applicationDocumentsDirectory
             if let photoEXT = review.photoURLS{
-                if photoEXT.count <= selectedImages.count {
+                if selectedImages.count <= photoEXT.count {
                     for i in 0 ..< selectedImages.count{
-                        
                         saveImage(withImage: selectedImages[i], forURL: docDIR.appendingPathComponent(photoEXT[i]))
                     }
-                    review.removePhotoFiles(numtoRv: selectedImages.count - photoEXT.count)
+                    review.removePhotoFiles(numtoRv: photoEXT.count - selectedImages.count)
                     print("after removing extra", review.photoURLS!)
                 }
                 else{
                     //selected pics in edited greater than all photos in review. overwrite all then add the remaining.
-                    for i in 0 ..< review.photoURLS!.count{
+                    for i in 0 ..< review.numPhotos{
                         saveImage(withImage: selectedImages[i], forURL: docDIR.appendingPathComponent(photoEXT[i]))
                     }
                     let diffNumPhotos = selectedImages.count - review.numPhotos
@@ -172,11 +171,11 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
                     for i in 0 ..< diffNumPhotos{
                         let filename = "Photo-\(photoIDBeg + i).jpg"
                         let dirPath = docDIR.appendingPathComponent(filename)
-                        review.photoURLS!.append(dirPath.absoluteString)
-                        saveImage(withImage: selectedImages[i], forURL: dirPath)
+                        review.photoURLS!.append(filename)
+                        saveImage(withImage: selectedImages[review.numPhotos + i], forURL: dirPath)
                     }
                 }
-              
+              //new key is 6, puts for 4 and 5
             }
             else{
                 let photoIDBeg = Review.nextPhotoIDBeginning(numPhotos: selectedImages.count)

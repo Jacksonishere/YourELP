@@ -26,7 +26,7 @@ public class Review: NSManagedObject {
     func removePhotoFiles(numtoRv numRv:Int) {
         for i in 0 ..< numRv{
             do {
-                try FileManager.default.removeItem(at: URL(string: photoURLS![numPhotos - i - 1])!)
+                try FileManager.default.removeItem(at: applicationDocumentsDirectory.appendingPathComponent(photoURLS![numPhotos - i - 1]))
             }
             catch {
                 print("Error removing file: \(error)")
