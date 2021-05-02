@@ -2,11 +2,12 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Review" representedClassName="Review" syncable="YES">
         <attribute name="businessName" attributeType="String"/>
+        <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="photoURLS" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[String]"/>
         <attribute name="rating" attributeType="Double" defaultValueString="0" usesScalarValueType="YES" customClassName="NSNumber"/>
         <attribute name="reviewDesc" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Review" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="Review" positionX="-63" positionY="-18" width="128" height="104"/>
     </elements>
 </model>

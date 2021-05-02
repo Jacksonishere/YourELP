@@ -10,6 +10,11 @@ import CoreData
 import Cosmos
 import ImagePicker
 
+protocol AddReviewDelegate: class {
+    func finishedAdding()
+}
+
+
 class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageButtonDelegate{
     
     deinit {
@@ -42,25 +47,34 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
     @IBOutlet weak var cosmoView: CosmosView!
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var deleteRevButton: UIButton!
     
     var userRating:Double = 0
     var businessName:String = ""
+    var categoryName:String = ""
     
     var selectedImages:[UIImage]?
     var editReviewImages:[UIImage]?
     var managedObjectContext: NSManagedObjectContext!
+    
+    weak var delegate: AddReviewDelegate?
+
     //use didset to set the other properties
     var reviewtoEdit:Review? {
         didSet{
             if let review = reviewtoEdit, let loadPhotos = review.photoURLS{
-                for photoURL in loadPhotos{
-                    let addImage = UIImage(contentsOfFile: URL(string: photoURL)!.path)
-                    editReviewImages?.append(addImage!)
+                editReviewImages = [UIImage]()
+                
+                for photoURLExtensions in loadPhotos{
+                    let photoURL = applicationDocumentsDirectory.appendingPathComponent(photoURLExtensions)
+                    if let addImage = UIImage(contentsOfFile: photoURL.path){
+                        editReviewImages!.append(addImage)
+                    }
                 }
-                collectionView.reloadData()
                 businessName = review.businessName
                 userRating = review.rating
-                descView.text = review.reviewDesc
+                
+                title = "Edit Your Review"
             }
         }
     }
@@ -69,8 +83,19 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        descView.text = "Write about your experience!"
-        descView.textColor = UIColor.lightGray
+        if reviewtoEdit != nil{
+            print("addreview vc editing")
+            deleteRevButton.isEnabled = true
+            descView.text = reviewtoEdit!.reviewDesc
+        }
+        else{
+            print("addreview vc adding")
+            deleteRevButton.isEnabled = false
+            deleteRevButton.alpha = 0.0
+
+            descView.text = "Write about your experience!"
+            descView.textColor = UIColor.lightGray
+        }
         
         cosmoView.settings.fillMode = .full
         cosmoView.rating = userRating
@@ -111,6 +136,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         else {
             hudView.text = "Added"
             review = Review(context: managedObjectContext)
+            review.category = categoryName
             //set images nil for now
             review.photoURLS = nil
         }
@@ -126,23 +152,26 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         if let selectedImages = selectedImages{
             //already has photos and the num of selected photos the same, just overwrite.
             //if its less than, we're gonna delete the last few images we didnt overwrite
-            if let reviewPhotos = review.photoURLS{
-                if reviewPhotos.count <= selectedImages.count {
+            let docDIR = applicationDocumentsDirectory
+            if let photoEXT = review.photoURLS{
+                if photoEXT.count <= selectedImages.count {
                     for i in 0 ..< selectedImages.count{
-                        saveImage(withImage: selectedImages[i], forURL: URL(string: reviewPhotos[i])!)
+                        
+                        saveImage(withImage: selectedImages[i], forURL: docDIR.appendingPathComponent(photoEXT[i]))
                     }
-                    review.removePhotoFiles(numtoRv: selectedImages.count - reviewPhotos.count)
+                    review.removePhotoFiles(numtoRv: selectedImages.count - photoEXT.count)
+                    print("after removing extra", review.photoURLS!)
                 }
                 else{
                     //selected pics in edited greater than all photos in review. overwrite all then add the remaining.
                     for i in 0 ..< review.photoURLS!.count{
-                        saveImage(withImage: selectedImages[i], forURL: URL(string: review.photoURLS![i])!)
+                        saveImage(withImage: selectedImages[i], forURL: docDIR.appendingPathComponent(photoEXT[i]))
                     }
                     let diffNumPhotos = selectedImages.count - review.numPhotos
                     let photoIDBeg = Review.nextPhotoIDBeginning(numPhotos: diffNumPhotos)
                     for i in 0 ..< diffNumPhotos{
                         let filename = "Photo-\(photoIDBeg + i).jpg"
-                        let dirPath = applicationDocumentsDirectory.appendingPathComponent(filename)
+                        let dirPath = docDIR.appendingPathComponent(filename)
                         review.photoURLS!.append(dirPath.absoluteString)
                         saveImage(withImage: selectedImages[i], forURL: dirPath)
                     }
@@ -151,16 +180,14 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             }
             else{
                 let photoIDBeg = Review.nextPhotoIDBeginning(numPhotos: selectedImages.count)
-                var stringURLs = [String]()
+                var fileNames = [String]()
                 for i in 0 ..< selectedImages.count{
                     let filename = "Photo-\(photoIDBeg + i).jpg"
                     let dirPath = applicationDocumentsDirectory.appendingPathComponent(filename)
-                    stringURLs.append(dirPath.absoluteString)
+                    fileNames.append(filename)
                     saveImage(withImage: selectedImages[i], forURL: dirPath)
                 }
-                print("string urls", stringURLs)
-                review.photoURLS = stringURLs
-                print("Review photo urls is now", review.photoURLS!)
+                review.photoURLS = fileNames
             }
         }
         do {
@@ -168,6 +195,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             try managedObjectContext.save()
             afterDelay(0.6) {
                 hudView.hide()
+                self.delegate?.finishedAdding()
                 self.navigationController?.popViewController(animated: true)
             }
         }

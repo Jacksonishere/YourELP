@@ -9,21 +9,62 @@ import UIKit
 import MapKit
 import CoreData
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, AddReviewDelegate {
+    
+    func finishedAdding() {
+        if let starPath = starIndexPath{
+            let cell = tableView.cellForRow(at: starPath) as! MapCell
+            cell.highlightStar()
+        }
+        else{
+            print("START PATH NIL")
+        }
+    }
+    
 
     @IBOutlet weak var tableView: UITableView!
     var managedObjectContext: NSManagedObjectContext!
     
     var business:Business!
     var reviewsResultArray = [review]()
+    var privateReview:Review?
     
+    var starIndexPath:IndexPath?
     var hasSearched = false
     var isLoading = false
     var dataTask: URLSessionDataTask?
         
+    override func viewWillAppear(_ animated: Bool) {
+        if self.isViewLoaded {
+            getPrivateReview()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        getPrivateReview()
         performSearch()
+    }
+    //if there is private review already, it should highlight the star button.
+    //we add predicate to the fetch request.
+    // MARK: - TO DO: set up the segue so if already has review, star not only highlighted but the private review is also set. so, we pass this onto the add/edit review vc, change the buttons, etc.
+    func getPrivateReview(){
+        let fetchRequest = NSFetchRequest<Review>()
+        fetchRequest.entity = Review.entity()
+        fetchRequest.predicate = NSPredicate(format: "businessName == %@", business.name)
+        
+        do {
+            let results = try managedObjectContext.fetch(fetchRequest)
+            if results.count > 0 {
+                print("private review found")
+                privateReview = results.first!
+            }
+            else {
+                print("No private review found")
+            }
+        }
+        catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     func yelpURL() -> URL {
@@ -89,10 +130,19 @@ class MapViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addReview"{
+        if segue.identifier == "addOREditReview"{
             let vc = segue.destination as! AddReviewViewController
+            if let editReview = privateReview{
+                print("editing review")
+                vc.reviewtoEdit = editReview
+            }
+            else{
+                print("adding review")
+                vc.businessName = business.name
+                vc.categoryName = business.categories[0].title
+            }
+            vc.delegate = self
             vc.managedObjectContext = managedObjectContext
-            vc.businessName = business.name
         }
     }
 }
@@ -115,8 +165,14 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
+            starIndexPath = indexPath
             let cell = tableView.dequeueReusableCell(withIdentifier: "MapCell") as! MapCell
             cell.configure(forAnnotation: business.coordinates)
+            
+            if privateReview != nil{
+                cell.highlightStar()
+            }
+            
             cell.selectionStyle = .none
             return cell
         }

@@ -94,13 +94,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="p73-Jb-UaA">
                                                     <rect key="frame" x="159.5" y="12" width="95.5" height="20"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7b-4s-Mia">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7b-4s-Mia">
                                                             <rect key="frame" x="0.0" y="0.0" width="67.5" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" name="ArtistName"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ROz-f5-3UW">
+                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ROz-f5-3UW">
                                                             <rect key="frame" x="75.5" y="0.0" width="20" height="20"/>
                                                         </activityIndicatorView>
                                                     </subviews>
@@ -234,7 +234,7 @@
         <!--Map View Controller-->
         <scene sceneID="z1v-z4-fQm">
             <objects>
-                <viewController id="0Fa-Q6-Ocz" customClass="MapViewController" customModule="YourELP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="0Fa-Q6-Ocz" customClass="MapViewController" customModule="YourELP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T1h-3E-40i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -273,13 +273,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dUk-l2-Qkr">
                                                     <rect key="frame" x="159.5" y="12" width="95.5" height="20"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcW-XR-xIm">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcW-XR-xIm">
                                                             <rect key="frame" x="0.0" y="0.0" width="67.5" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" name="ArtistName"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="eyv-fc-ThA">
+                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="eyv-fc-ThA">
                                                             <rect key="frame" x="75.5" y="0.0" width="20" height="20"/>
                                                         </activityIndicatorView>
                                                     </subviews>
@@ -376,11 +376,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abJ-Cr-i7P" userLabel="Add review">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="abJ-Cr-i7P" userLabel="Add review">
                                                     <rect key="frame" x="372" y="19.5" width="22" height="20"/>
                                                     <state key="normal" backgroundImage="star" catalog="system"/>
+                                                    <state key="selected" backgroundImage="star.fill" catalog="system"/>
                                                     <connections>
-                                                        <segue destination="P9S-e4-yW5" kind="show" identifier="addReview" id="HHv-ov-s5d"/>
+                                                        <segue destination="P9S-e4-yW5" kind="show" identifier="addOREditReview" id="HHv-ov-s5d"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -397,6 +398,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="mapView" destination="3Lw-4v-hl0" id="zsP-7M-G2K"/>
+                                            <outlet property="starButton" destination="abJ-Cr-i7P" id="2Ju-70-WVO"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -427,7 +429,7 @@
         <!--Add Your Review-->
         <scene sceneID="PLA-Q5-JVX">
             <objects>
-                <viewController id="P9S-e4-yW5" customClass="AddReviewViewController" customModule="YourELP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="P9S-e4-yW5" customClass="AddReviewViewController" customModule="YourELP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KW3-Pq-f1p">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -532,10 +534,19 @@
                                     <outlet property="delegate" destination="P9S-e4-yW5" id="M8E-xi-4k5"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z42-3e-dVF">
+                                <rect key="frame" x="20" y="836" width="374" height="34"/>
+                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Delete">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hD6-li-qC8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="hD6-li-qC8" firstAttribute="trailing" secondItem="Z42-3e-dVF" secondAttribute="trailing" constant="20" id="ABf-f9-Azw"/>
                             <constraint firstItem="Glg-yv-xp7" firstAttribute="top" secondItem="EdG-Ex-hnB" secondAttribute="bottom" constant="8" id="L6V-H3-SM8"/>
                             <constraint firstItem="EdG-Ex-hnB" firstAttribute="top" secondItem="nhI-Ty-JvF" secondAttribute="bottom" constant="8" id="LTM-7E-xKH"/>
                             <constraint firstItem="nhI-Ty-JvF" firstAttribute="leading" secondItem="hD6-li-qC8" secondAttribute="leading" constant="20" id="Mnc-FP-F9C"/>
@@ -545,8 +556,10 @@
                             <constraint firstItem="hD6-li-qC8" firstAttribute="trailing" secondItem="wyk-wb-y8F" secondAttribute="trailing" constant="20" id="fed-cP-ze9"/>
                             <constraint firstItem="Glg-yv-xp7" firstAttribute="leading" secondItem="hD6-li-qC8" secondAttribute="leading" constant="20" id="gUt-xV-IL9"/>
                             <constraint firstItem="wyk-wb-y8F" firstAttribute="top" secondItem="Glg-yv-xp7" secondAttribute="bottom" constant="8" id="l9a-4F-dCD"/>
+                            <constraint firstItem="Z42-3e-dVF" firstAttribute="bottom" secondItem="hD6-li-qC8" secondAttribute="bottom" constant="8" id="pP3-NK-bNJ"/>
                             <constraint firstItem="hD6-li-qC8" firstAttribute="trailing" secondItem="Glg-yv-xp7" secondAttribute="trailing" constant="20" id="rmX-Di-ZfN"/>
                             <constraint firstItem="hD6-li-qC8" firstAttribute="trailing" secondItem="nhI-Ty-JvF" secondAttribute="trailing" constant="20" id="wZp-5X-yJC"/>
+                            <constraint firstItem="Z42-3e-dVF" firstAttribute="leading" secondItem="hD6-li-qC8" secondAttribute="leading" constant="20" id="z8a-ma-hwG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Your Review" largeTitleDisplayMode="never" id="iC2-TA-pgM">
@@ -565,6 +578,7 @@
                         <outlet property="businessLabel" destination="nhI-Ty-JvF" id="IvO-Qj-Rs1"/>
                         <outlet property="collectionView" destination="wyk-wb-y8F" id="gBu-FB-uRZ"/>
                         <outlet property="cosmoView" destination="EdG-Ex-hnB" id="uso-XR-Vmc"/>
+                        <outlet property="deleteRevButton" destination="Z42-3e-dVF" id="oN2-wx-oVN"/>
                         <outlet property="descView" destination="Glg-yv-xp7" id="3o5-e4-XQ0"/>
                     </connections>
                 </viewController>
@@ -763,6 +777,11 @@
             <point key="canvasLocation" x="1811.594202898551" y="837.72321428571422"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="EdG-Ex-hnB">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+    </designables>
     <resources>
         <image name="addImage" width="40" height="40"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
@@ -776,6 +795,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="viewFlipsideBackgroundColor">
             <color red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

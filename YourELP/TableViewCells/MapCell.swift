@@ -10,7 +10,9 @@ import MapKit
 
 class MapCell: UITableViewCell {
 
+    @IBOutlet weak var starButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -25,5 +27,9 @@ class MapCell: UITableViewCell {
         let region = MKCoordinateRegion(
             center: annotation.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         mapView.setRegion(mapView.regionThatFits(region), animated: true)
+    }
+    
+    func highlightStar(){
+        starButton.isSelected = true
     }
 }
