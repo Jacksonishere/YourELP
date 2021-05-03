@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		365A5397263F8D42000F6F4F /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 365A5396263F8D41000F6F4F /* success.mp3 */; };
+		365A53A0263FA110000F6F4F /* MyReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A539F263FA110000F6F4F /* MyReviewCell.swift */; };
 		366954B22638D7B500A71D6C /* BusinessResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366954B12638D7B500A71D6C /* BusinessResultCell.swift */; };
 		366954B52638DEE300A71D6C /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366954B42638DEE300A71D6C /* UIImageView+DownloadImage.swift */; };
 		366954B9263904AB00A71D6C /* yelpStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366954B8263904AB00A71D6C /* yelpStars.swift */; };
@@ -36,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		12A70B53793F1D4B5C5241D2 /* Pods-YourELP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourELP.debug.xcconfig"; path = "Target Support Files/Pods-YourELP/Pods-YourELP.debug.xcconfig"; sourceTree = "<group>"; };
+		365A5396263F8D41000F6F4F /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
+		365A539F263FA110000F6F4F /* MyReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewCell.swift; sourceTree = "<group>"; };
 		366954B12638D7B500A71D6C /* BusinessResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessResultCell.swift; sourceTree = "<group>"; };
 		366954B42638DEE300A71D6C /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
 		366954B8263904AB00A71D6C /* yelpStars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yelpStars.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				366954B12638D7B500A71D6C /* BusinessResultCell.swift */,
 				36B64180263B47AD006620AC /* ReviewResultCell.swift */,
 				36B64183263B6548006620AC /* MapCell.swift */,
+				365A539F263FA110000F6F4F /* MyReviewCell.swift */,
+				36B641CA263CEB41006620AC /* photoCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -138,7 +144,7 @@
 				36B64190263C5B1C006620AC /* globalFuncs.swift */,
 				36B64198263C6F36006620AC /* MyReviewsViewController.swift */,
 				36B6419B263C81AF006620AC /* HudView.swift */,
-				36B641CA263CEB41006620AC /* photoCell.swift */,
+				365A5396263F8D41000F6F4F /* success.mp3 */,
 				36B641CE263CFA2A006620AC /* addImageButtonCell.swift */,
 			);
 			path = YourELP;
@@ -222,6 +228,7 @@
 			files = (
 				36B9F833262F6E4A0010BFCD /* LaunchScreen.storyboard in Resources */,
 				36B9F830262F6E4A0010BFCD /* Assets.xcassets in Resources */,
+				365A5397263F8D42000F6F4F /* success.mp3 in Resources */,
 				36B9F82B262F6E460010BFCD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +299,7 @@
 				36B6419C263C81AF006620AC /* HudView.swift in Sources */,
 				36B64181263B47AD006620AC /* ReviewResultCell.swift in Sources */,
 				36BFC6262630EEC000D70D60 /* YelpResult.swift in Sources */,
+				365A53A0263FA110000F6F4F /* MyReviewCell.swift in Sources */,
 				36B9F826262F6E460010BFCD /* SceneDelegate.swift in Sources */,
 				366954B22638D7B500A71D6C /* BusinessResultCell.swift in Sources */,
 				36B641C1263C9D88006620AC /* Review+CoreDataClass.swift in Sources */,

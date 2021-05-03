@@ -9,6 +9,7 @@ import UIKit
 import CoreData
 import Cosmos
 import ImagePicker
+import AVFoundation
 
 protocol AddReviewDelegate: class {
     func finishedAdding()
@@ -47,7 +48,11 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
     @IBOutlet weak var cosmoView: CosmosView!
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var deleteRevButton: UIButton!
+    @IBOutlet weak var deleteRevButton: UIButton!{
+        didSet{
+            deleteRevButton.layer.cornerRadius = 10
+        }
+    }
     
     var userRating:Double = 0
     var businessName:String = ""
@@ -58,6 +63,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
     var managedObjectContext: NSManagedObjectContext!
     
     weak var delegate: AddReviewDelegate?
+    var audioPlayer:AVAudioPlayer!
 
     //use didset to set the other properties
     var reviewtoEdit:Review? {
@@ -192,7 +198,8 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         do {
             print("about to save context and show delay")
             try managedObjectContext.save()
-            afterDelay(0.6) {
+            playSound()
+            afterDelay(2.0) {
                 hudView.hide()
                 self.delegate?.finishedAdding()
                 self.navigationController?.popViewController(animated: true)
@@ -203,6 +210,17 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         }
     }
     
+    func playSound(){
+        let path = Bundle.main.path(forResource: "success.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        }
+        catch {
+            fatalError("Failed to load file")
+        }
+    }
     func saveImage(withImage image:UIImage, forURL url:URL){
         if let data = image.jpegData(compressionQuality: 0.5) {
             do {
