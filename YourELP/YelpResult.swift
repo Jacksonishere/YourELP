@@ -22,9 +22,9 @@ class Business:Codable{
     var rating:Double
     var categories:[Category]
     var coordinates:LocationCoordinate
+    var price:String?
     var location:address
     var display_phone:String
-    
 }
 
 class Category:Codable{
