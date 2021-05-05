@@ -32,4 +32,7 @@ class MapCell: UITableViewCell {
     func highlightStar(){
         starButton.isSelected = true
     }
+    func dehighlightStar(){
+        starButton.isSelected = false
+    }
 }

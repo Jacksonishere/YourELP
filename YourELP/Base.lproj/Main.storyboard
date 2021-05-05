@@ -94,13 +94,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="p73-Jb-UaA">
                                                     <rect key="frame" x="159.5" y="12" width="95.5" height="20"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7b-4s-Mia">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7b-4s-Mia">
                                                             <rect key="frame" x="0.0" y="0.0" width="67.5" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" name="ArtistName"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ROz-f5-3UW">
+                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ROz-f5-3UW">
                                                             <rect key="frame" x="75.5" y="0.0" width="20" height="20"/>
                                                         </activityIndicatorView>
                                                     </subviews>
@@ -541,6 +541,9 @@
                                 <state key="normal" title="Delete">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="presentDeleteAlert:" destination="P9S-e4-yW5" eventType="touchUpInside" id="rBb-Xb-UlX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hD6-li-qC8"/>
@@ -669,7 +672,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="135" id="24h-WP-uns"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G57-OJ-9sB">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G57-OJ-9sB">
                                                         <size key="itemSize" width="145" height="135"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -677,7 +680,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="j0Q-lq-EiI" customClass="photoCell" customModule="YourELP" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="143" height="134"/>
+                                                            <rect key="frame" x="0.0" y="0.5" width="143" height="134"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aIH-OM-NpG">
                                                                 <rect key="frame" x="0.0" y="0.0" width="143" height="134"/>
@@ -745,6 +748,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="poZ-L5-VPZ"/>
+                    <connections>
+                        <outlet property="tableView" destination="N4f-bF-AVO" id="FhQ-my-kxb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jk6-en-ySR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -785,6 +791,14 @@
             <point key="canvasLocation" x="1811.594202898551" y="837.72321428571422"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="EdG-Ex-hnB">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="NkV-dT-WvS">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+    </designables>
     <resources>
         <image name="addImage" width="40" height="40"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>

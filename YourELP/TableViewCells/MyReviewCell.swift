@@ -17,6 +17,10 @@ class MyReviewCell: UITableViewCell {
     
     var reviewImages = [UIImage]()
     
+    override func prepareForReuse() {
+        reviewImages = []
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         myRating.settings.updateOnTouch = false
@@ -32,16 +36,20 @@ class MyReviewCell: UITableViewCell {
         businessName.text = review.businessName
         myDesc.text = review.reviewDesc
         myRating.rating = review.rating
-        
+
         if let photoNames = review.photoURLS{
+            collectionView.isHidden = false
             for photoName in photoNames{
                 let photoURL = applicationDocumentsDirectory.appendingPathComponent(photoName)
                 if let addImage = UIImage(contentsOfFile: photoURL.path){
                     reviewImages.append(addImage)
                 }
             }
+            collectionView.reloadData()
         }
-        collectionView.reloadData()
+        else{
+            collectionView.isHidden = true
+        }
     }
 }
 

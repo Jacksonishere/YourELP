@@ -13,6 +13,7 @@ import AVFoundation
 
 protocol AddReviewDelegate: class {
     func finishedAdding()
+    func finishedDeleting()
 }
 
 
@@ -202,11 +203,46 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             afterDelay(2.0) {
                 hudView.hide()
                 self.delegate?.finishedAdding()
-                self.navigationController?.popViewController(animated: true)
+//                self.navigationController?.popViewController(animated: true)
             }
         }
         catch {
             fatalError("failed to save!")
+        }
+    }
+    
+
+    @IBAction func presentDeleteAlert(_ sender: Any) {
+        let deleteAlert = UIAlertController(title: "Delete Review", message: "Are you sure you want to delete this review?", preferredStyle: UIAlertController.Style.alert)
+
+        deleteAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { [weak self] (action) in
+            self!.deleteReview()
+        }))
+
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak self] (action) in
+            print("Cancelled")
+        }))
+
+        present(deleteAlert, animated: true, completion: nil)
+    }
+    
+    func deleteReview(){
+        guard let mainView = navigationController?.parent?.view else { return }
+        let hudView = HudView.hud(inView: mainView, animated: true)
+        hudView.text = "Deleted"
+        
+        reviewtoEdit!.removePhotoFiles(numtoRv: reviewtoEdit!.numPhotos)
+        
+        managedObjectContext.delete(reviewtoEdit!)
+        do {
+            try managedObjectContext.save()
+            afterDelay(2.0) {
+                hudView.hide()
+                self.delegate?.finishedDeleting()
+            }
+        }
+        catch {
+            fatalError("error deleting review")
         }
     }
     
@@ -258,13 +294,6 @@ extension AddReviewViewController:UITextViewDelegate{
 
 extension AddReviewViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //if not editing review and didnt select images
-//        if reviewtoEdit == nil, !didSelectImages || reviewtoEdit != nil, reviewtoEdit!.photoURLS == nil, !didSelectImages{
-//            return 1
-//        }
-//        else if reviewtoEdit != nil, !didSelectImages{
-//            return 1 +
-//        }
         if didSelectImages{
             return 1 + selectedImages!.count
         }

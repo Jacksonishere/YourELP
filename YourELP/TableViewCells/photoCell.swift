@@ -15,6 +15,9 @@ class photoCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    override func prepareForReuse() {
+//        photoView.image = nil
+    }
     
     func configure(forImage image:UIImage){
         photoView.image = image
