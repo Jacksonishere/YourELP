@@ -14,6 +14,7 @@
 		366954B9263904AB00A71D6C /* yelpStars.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366954B8263904AB00A71D6C /* yelpStars.swift */; };
 		366954BF2639F7A500A71D6C /* String+AppendStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366954BE2639F7A500A71D6C /* String+AppendStrings.swift */; };
 		366954C3263A1E8600A71D6C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366954C2263A1E8600A71D6C /* MapViewController.swift */; };
+		367F40F02643754D0060992B /* MyReviewNoImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367F40EF2643754D0060992B /* MyReviewNoImagesCell.swift */; };
 		36B64181263B47AD006620AC /* ReviewResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B64180263B47AD006620AC /* ReviewResultCell.swift */; };
 		36B64184263B6548006620AC /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B64183263B6548006620AC /* MapCell.swift */; };
 		36B6418A263BA387006620AC /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B64189263BA387006620AC /* AddReviewViewController.swift */; };
@@ -45,6 +46,7 @@
 		366954B8263904AB00A71D6C /* yelpStars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yelpStars.swift; sourceTree = "<group>"; };
 		366954BE2639F7A500A71D6C /* String+AppendStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AppendStrings.swift"; sourceTree = "<group>"; };
 		366954C2263A1E8600A71D6C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		367F40EF2643754D0060992B /* MyReviewNoImagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewNoImagesCell.swift; sourceTree = "<group>"; };
 		36B64180263B47AD006620AC /* ReviewResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResultCell.swift; sourceTree = "<group>"; };
 		36B64183263B6548006620AC /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
 		36B64189263BA387006620AC /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				36B64183263B6548006620AC /* MapCell.swift */,
 				365A539F263FA110000F6F4F /* MyReviewCell.swift */,
 				36B641CA263CEB41006620AC /* photoCell.swift */,
+				367F40EF2643754D0060992B /* MyReviewNoImagesCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				366954C3263A1E8600A71D6C /* MapViewController.swift in Sources */,
 				366954BF2639F7A500A71D6C /* String+AppendStrings.swift in Sources */,
 				36B641CF263CFA2A006620AC /* addImageButtonCell.swift in Sources */,
+				367F40F02643754D0060992B /* MyReviewNoImagesCell.swift in Sources */,
 				36B6418A263BA387006620AC /* AddReviewViewController.swift in Sources */,
 				36B64191263C5B1C006620AC /* globalFuncs.swift in Sources */,
 				36B9F824262F6E460010BFCD /* AppDelegate.swift in Sources */,

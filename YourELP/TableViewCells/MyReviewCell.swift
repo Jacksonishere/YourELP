@@ -38,17 +38,15 @@ class MyReviewCell: UITableViewCell {
         myRating.rating = review.rating
 
         if let photoNames = review.photoURLS{
-            collectionView.isHidden = false
             for photoName in photoNames{
                 let photoURL = applicationDocumentsDirectory.appendingPathComponent(photoName)
                 if let addImage = UIImage(contentsOfFile: photoURL.path){
                     reviewImages.append(addImage)
                 }
             }
-            collectionView.reloadData()
-        }
-        else{
-            collectionView.isHidden = true
+            if reviewImages.count == review.numPhotos{
+                collectionView.reloadData()
+            }
         }
     }
 }

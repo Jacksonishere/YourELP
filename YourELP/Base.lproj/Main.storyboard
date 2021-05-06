@@ -672,7 +672,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="135" id="24h-WP-uns"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G57-OJ-9sB">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="G57-OJ-9sB">
                                                         <size key="itemSize" width="145" height="135"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -686,7 +686,7 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="143" height="134"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pfq-Wc-04i">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pfq-Wc-04i">
                                                                         <rect key="frame" x="0.0" y="0.0" width="143" height="134"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="135" id="8sX-xk-6gJ"/>
@@ -729,6 +729,52 @@
                                             <outlet property="collectionView" destination="jjc-e6-FgR" id="nNF-47-Cum"/>
                                             <outlet property="myDesc" destination="A3i-WC-s9C" id="Zeb-dC-MYo"/>
                                             <outlet property="myRating" destination="NkV-dT-WvS" id="NyB-eq-cBC"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyReviewNoImagesCell" rowHeight="242" id="9lg-i6-Nno" customClass="MyReviewNoImagesCell" customModule="YourELP" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="270" width="414" height="242"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9lg-i6-Nno" id="ZBY-Rq-g4z">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="242"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2TR-gr-rEa">
+                                                    <rect key="frame" x="8" y="11" width="55" height="24"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmE-No-paP" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="8" y="43" width="120" height="20"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="F8D-iS-K74"/>
+                                                        <constraint firstAttribute="height" constant="20" id="ZUJ-pf-JCP"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcR-u7-Y6q" userLabel="ReviewDesc">
+                                                    <rect key="frame" x="8" y="71" width="41.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2TR-gr-rEa" secondAttribute="trailing" constant="8" id="2Ml-Ho-YKQ"/>
+                                                <constraint firstItem="gcR-u7-Y6q" firstAttribute="leading" secondItem="ZBY-Rq-g4z" secondAttribute="leading" constant="8" id="7fd-X7-kqw"/>
+                                                <constraint firstItem="gmE-No-paP" firstAttribute="top" secondItem="2TR-gr-rEa" secondAttribute="bottom" constant="8" id="RUu-2v-55P"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="gcR-u7-Y6q" secondAttribute="bottom" constant="8" id="S1K-jf-w4Y"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gcR-u7-Y6q" secondAttribute="trailing" constant="8" id="SEq-mA-8mx"/>
+                                                <constraint firstItem="2TR-gr-rEa" firstAttribute="leading" secondItem="ZBY-Rq-g4z" secondAttribute="leading" constant="8" id="VNf-Wn-a0M"/>
+                                                <constraint firstItem="2TR-gr-rEa" firstAttribute="top" secondItem="ZBY-Rq-g4z" secondAttribute="top" constant="11" id="dKt-SL-nX1"/>
+                                                <constraint firstItem="gcR-u7-Y6q" firstAttribute="top" secondItem="gmE-No-paP" secondAttribute="bottom" constant="8" id="tJs-AC-Zu5"/>
+                                                <constraint firstItem="gmE-No-paP" firstAttribute="leading" secondItem="ZBY-Rq-g4z" secondAttribute="leading" constant="8" id="xPJ-pg-H2e"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="businessName" destination="2TR-gr-rEa" id="dw8-cK-kKj"/>
+                                            <outlet property="myDesc" destination="gcR-u7-Y6q" id="JFh-rq-AZg"/>
+                                            <outlet property="myRating" destination="gmE-No-paP" id="ums-v2-ELK"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -796,6 +842,9 @@
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
         <designable name="NkV-dT-WvS">
+            <size key="intrinsicContentSize" width="120" height="20"/>
+        </designable>
+        <designable name="gmE-No-paP">
             <size key="intrinsicContentSize" width="120" height="20"/>
         </designable>
     </designables>

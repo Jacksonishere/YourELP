@@ -91,12 +91,18 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
     }
 
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewCell", for: indexPath) as! MyReviewCell
-
         let myReview = fetchedResultsController.object(at: indexPath)
-        cell.configure(forReview: myReview)
-
-        return cell
+        
+        if myReview.numPhotos == 0{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewNoImagesCell", for: indexPath) as! MyReviewNoImagesCell
+            cell.configure(forReview: myReview)
+            return cell
+        }
+        else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewCell", for: indexPath) as! MyReviewCell
+            cell.configure(forReview: myReview)
+            return cell
+        }
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

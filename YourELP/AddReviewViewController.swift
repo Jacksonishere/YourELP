@@ -58,6 +58,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
     var userRating:Double = 0
     var businessName:String = ""
     var categoryName:String = ""
+    var businessID:String = ""
     
     var selectedImages:[UIImage]?
     var editReviewImages:[UIImage]?
@@ -145,6 +146,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             review = Review(context: managedObjectContext)
             review.category = categoryName
             //set images nil for now
+            review.businessID = businessID
             review.photoURLS = nil
         }
         review.rating = userRating

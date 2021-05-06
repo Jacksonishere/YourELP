@@ -62,7 +62,8 @@ class MapViewController: UIViewController, AddReviewDelegate {
     func getPrivateReview(){
         let fetchRequest = NSFetchRequest<Review>()
         fetchRequest.entity = Review.entity()
-        fetchRequest.predicate = NSPredicate(format: "businessName == %@", business.name)
+//        fetchRequest.predicate = NSPredicate(format: "businessName == %@", business.name)
+        fetchRequest.predicate = NSPredicate(format: "businessID == %@", business.id)
         
         do {
             let results = try managedObjectContext.fetch(fetchRequest)
@@ -152,6 +153,7 @@ class MapViewController: UIViewController, AddReviewDelegate {
                 print("adding review")
                 vc.businessName = business.name
                 vc.categoryName = business.categories[0].title
+                vc.businessID = business.id
             }
             vc.delegate = self
             vc.managedObjectContext = managedObjectContext
