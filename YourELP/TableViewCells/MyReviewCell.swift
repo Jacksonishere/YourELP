@@ -14,6 +14,7 @@ class MyReviewCell: UITableViewCell {
     @IBOutlet weak var myRating: CosmosView!
     @IBOutlet weak var myDesc: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var businessAddress: UILabel!
     
     var reviewImages = [UIImage]()
     
@@ -36,6 +37,9 @@ class MyReviewCell: UITableViewCell {
         businessName.text = review.businessName
         myDesc.text = review.reviewDesc
         myRating.rating = review.rating
+        var businessAddressConvert = ""
+        businessAddressConvert.displayAddress(address: review.businessAddress, separatedBy: "\n")
+        businessAddress.text = businessAddressConvert
 
         if let photoNames = review.photoURLS{
             for photoName in photoNames{

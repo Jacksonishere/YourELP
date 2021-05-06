@@ -59,6 +59,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
     var businessName:String = ""
     var categoryName:String = ""
     var businessID:String = ""
+    var businessAddress = [String]()
     
     var selectedImages:[UIImage]?
     var editReviewImages:[UIImage]?
@@ -147,12 +148,17 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             review.category = categoryName
             //set images nil for now
             review.businessID = businessID
+            review.businessAddress = businessAddress
             review.photoURLS = nil
         }
         review.rating = userRating
         review.businessName = businessName
-        review.reviewDesc = descView.text
-        
+        if descView.text == "Write about your experience!"{
+            descView.text = ""
+        }
+        else{
+            review.reviewDesc = descView.text
+        }
         
 //        now if he has <= images.count, its fine because we just loop through that array and overwrite the image at location. delete the remaining if there are leftovers
 //

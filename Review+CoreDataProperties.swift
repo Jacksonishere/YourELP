@@ -17,6 +17,7 @@ extension Review {
     }
 
     @NSManaged public var photoURLS: [String]?
+    @NSManaged public var businessAddress: [String]
     @NSManaged public var rating: Double
     @NSManaged public var businessName: String
     @NSManaged public var businessID: String

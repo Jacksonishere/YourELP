@@ -154,6 +154,7 @@ class MapViewController: UIViewController, AddReviewDelegate {
                 vc.businessName = business.name
                 vc.categoryName = business.categories[0].title
                 vc.businessID = business.id
+                vc.businessAddress = business.location.display_address
             }
             vc.delegate = self
             vc.managedObjectContext = managedObjectContext

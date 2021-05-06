@@ -11,6 +11,7 @@ import Cosmos
 class MyReviewNoImagesCell: UITableViewCell {
 
     @IBOutlet weak var businessName: UILabel!
+    @IBOutlet weak var businessAddress: UILabel!
     @IBOutlet weak var myRating: CosmosView!
     @IBOutlet weak var myDesc: UILabel!
     
@@ -30,6 +31,10 @@ class MyReviewNoImagesCell: UITableViewCell {
         businessName.text = review.businessName
         myDesc.text = review.reviewDesc
         myRating.rating = review.rating
+        
+        var businessAddressConvert = ""
+        businessAddressConvert.displayAddress(address: review.businessAddress, separatedBy: "\n")
+        businessAddress.text = businessAddressConvert
     }
 
 }

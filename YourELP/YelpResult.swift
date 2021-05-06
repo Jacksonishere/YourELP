@@ -15,7 +15,7 @@ class YelpResultArray:Codable{
     var region:Region
 }
 
-class Business:Codable{
+public class Business:NSObject, Codable{
     var id:String
     var name:String
     var image_url:String
