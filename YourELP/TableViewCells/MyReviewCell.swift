@@ -41,12 +41,16 @@ class MyReviewCell: UITableViewCell {
         businessAddressConvert.displayAddress(address: review.businessAddress, separatedBy: "\n")
         businessAddress.text = businessAddressConvert
 
+        
         if let photoNames = review.photoURLS{
+//            for photoName in photoNames{
+//                let photoURL = applicationDocumentsDirectory.appendingPathComponent(photoName)
+//                if let addImage = UIImage(contentsOfFile: photoURL.path){
+//                    reviewImages.append(addImage)
+//                }
+//            }
             for photoName in photoNames{
-                let photoURL = applicationDocumentsDirectory.appendingPathComponent(photoName)
-                if let addImage = UIImage(contentsOfFile: photoURL.path){
-                    reviewImages.append(addImage)
-                }
+                reviewImages.append(imageCache.current.imageDict[photoName]!)
             }
             if reviewImages.count == review.numPhotos{
                 collectionView.reloadData()

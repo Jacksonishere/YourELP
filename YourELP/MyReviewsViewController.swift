@@ -96,25 +96,69 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
         if myReview.numPhotos == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewNoImagesCell", for: indexPath) as! MyReviewNoImagesCell
             cell.configure(forReview: myReview)
+            cell.selectionStyle = .none
             return cell
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewCell", for: indexPath) as! MyReviewCell
             cell.configure(forReview: myReview)
+            cell.selectionStyle = .none
             return cell
         }
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let deleteReview = fetchedResultsController.object(at: indexPath)
-            deleteReview.removePhotoFiles(numtoRv: deleteReview.numPhotos)
-            managedObjectContext.delete(deleteReview)
-            do {
-                try managedObjectContext.save()
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let reviewForCell = fetchedResultsController.object(at: indexPath)
+        let editReview = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, view, completionHandler) in
+            self?.editReview(forReview: reviewForCell)
+            completionHandler(true)
+        }
+        editReview.backgroundColor = .systemBlue
+        
+        let removeReview = UIContextualAction(style: .normal, title: "Delete") { [weak self] (action, view, completionHandler) in
+            self?.deleteReview(forReview: reviewForCell)
+            completionHandler(true)
+        }
+        removeReview.backgroundColor = .systemRed
+        
+        let configuration = UISwipeActionsConfiguration(actions: [editReview, removeReview])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
+    }
+    
+    func editReview(forReview review:Review){
+        performSegue(withIdentifier: "editReview", sender: review)
+    }
+    
+    func deleteReview(forReview review:Review){
+        guard let mainView = navigationController?.parent?.view else { return }
+        let hudView = HudView.hud(inView: mainView, animated: true)
+        hudView.text = "Deleted"
+        
+        review.removePhotoFiles(numtoRv: review.numPhotos)
+        
+        managedObjectContext.delete(review)
+        do {
+            try managedObjectContext.save()
+            afterDelay(2.0) {
+                hudView.hide()
+                for key in imageCache.current.imageDict{
+                    print(key.key, "current key")
                 }
-            catch {
-                fatalError("Could not delete")
+            }
+        }
+        catch {
+            fatalError("error deleting review")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editReview"{
+            let vc = segue.destination as! AddReviewViewController
+            if let editReview = sender{
+                print("editing review")
+                vc.reviewtoEdit = editReview as? Review
+                vc.managedObjectContext = managedObjectContext
             }
         }
     }

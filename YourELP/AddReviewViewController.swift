@@ -47,6 +47,8 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
     @IBOutlet weak var businessLabel: UILabel!
     @IBOutlet weak var descView: UITextView!
     @IBOutlet weak var cosmoView: CosmosView!
+    @IBOutlet weak var barButton: UIBarButtonItem!
+    
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var deleteRevButton: UIButton!{
@@ -111,11 +113,12 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         
         cosmoView.didTouchCosmos = { [weak self] rating in
             self!.userRating = rating
+            self!.barButton.isEnabled = true
 //            print(rating, "user selected rating")
         }
         businessLabel.text = businessName
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard(_:)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
         
         
@@ -171,7 +174,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             if let photoEXT = review.photoURLS{
                 if selectedImages.count <= photoEXT.count {
                     for i in 0 ..< selectedImages.count{
-                        saveImage(withImage: selectedImages[i], forURL: docDIR.appendingPathComponent(photoEXT[i]))
+                        saveImage(withImage: selectedImages[i], forURL: docDIR.appendingPathComponent(photoEXT[i]), forFilename: photoEXT[i])
                     }
                     review.removePhotoFiles(numtoRv: photoEXT.count - selectedImages.count)
                     print("after removing extra", review.photoURLS!)
@@ -179,15 +182,16 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
                 else{
                     //selected pics in edited greater than all photos in review. overwrite all then add the remaining.
                     for i in 0 ..< review.numPhotos{
-                        saveImage(withImage: selectedImages[i], forURL: docDIR.appendingPathComponent(photoEXT[i]))
+                        saveImage(withImage: selectedImages[i], forURL: docDIR.appendingPathComponent(photoEXT[i]), forFilename: photoEXT[i])
                     }
                     let diffNumPhotos = selectedImages.count - review.numPhotos
                     let photoIDBeg = Review.nextPhotoIDBeginning(numPhotos: diffNumPhotos)
                     for i in 0 ..< diffNumPhotos{
                         let filename = "Photo-\(photoIDBeg + i).jpg"
                         let dirPath = docDIR.appendingPathComponent(filename)
+                        //photurls incremented so if selected images is only 1 more than before we appended a new filename to save the image in, its going to try to access selectedimages[selectedimages.count] causing crash
                         review.photoURLS!.append(filename)
-                        saveImage(withImage: selectedImages[review.numPhotos + i], forURL: dirPath)
+                        saveImage(withImage: selectedImages[review.numPhotos + i - 1], forURL: dirPath, forFilename: filename)
                     }
                 }
               //new key is 6, puts for 4 and 5
@@ -199,7 +203,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
                     let filename = "Photo-\(photoIDBeg + i).jpg"
                     let dirPath = applicationDocumentsDirectory.appendingPathComponent(filename)
                     fileNames.append(filename)
-                    saveImage(withImage: selectedImages[i], forURL: dirPath)
+                    saveImage(withImage: selectedImages[i], forURL: dirPath, forFilename: filename)
                 }
                 review.photoURLS = fileNames
             }
@@ -210,8 +214,11 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             playSound()
             afterDelay(2.0) {
                 hudView.hide()
+                for key in imageCache.current.imageDict{
+                    print(key.key, "current key")
+                }
                 self.delegate?.finishedAdding()
-//                self.navigationController?.popViewController(animated: true)
+                self.navigationController?.popViewController(animated: true)
             }
         }
         catch {
@@ -247,6 +254,10 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             afterDelay(2.0) {
                 hudView.hide()
                 self.delegate?.finishedDeleting()
+                for key in imageCache.current.imageDict{
+                    print(key.key, "current key")
+                }
+                self.navigationController?.popViewController(animated: true)
             }
         }
         catch {
@@ -265,10 +276,11 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             fatalError("Failed to load file")
         }
     }
-    func saveImage(withImage image:UIImage, forURL url:URL){
+    func saveImage(withImage image:UIImage, forURL url:URL, forFilename filename:String){
         if let data = image.jpegData(compressionQuality: 0.5) {
             do {
                 try data.write(to: url, options: .atomic)
+                imageCache.current.imageDict[filename] = image
             }
             catch {
                 print("Error writing file: \(error)")

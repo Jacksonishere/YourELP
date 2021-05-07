@@ -10,8 +10,14 @@ import Foundation
 extension String{
     mutating func displayAddress(address: [String], separatedBy separator: String) {
         if !address.isEmpty{
-            for line in address{
-                self = self + line + separator
+            let numLines = address.count
+            for i in 0..<numLines{
+                if i + 1 == numLines{
+                    self = self + address[i]
+                }
+                else{
+                    self = self + address[i] + separator
+                }
             }
         }
     }

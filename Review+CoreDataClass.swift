@@ -17,6 +17,7 @@ public class Review: NSManagedObject {
 //    
     var numPhotos: Int {
         if photoURLS != nil{
+            print(photoURLS!.count, "num photos")
             return photoURLS!.count
         }
         else{
@@ -26,7 +27,9 @@ public class Review: NSManagedObject {
     func removePhotoFiles(numtoRv numRv:Int) {
         for i in 0 ..< numRv{
             do {
-                try FileManager.default.removeItem(at: applicationDocumentsDirectory.appendingPathComponent(photoURLS![numPhotos - i - 1]))
+                let photoURL = photoURLS![numPhotos - i - 1]
+                try FileManager.default.removeItem(at: applicationDocumentsDirectory.appendingPathComponent(photoURL))
+                imageCache.current.imageDict[photoURL] = nil
             }
             catch {
                 print("Error removing file: \(error)")

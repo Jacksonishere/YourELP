@@ -23,10 +23,20 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         searchBar.becomeFirstResponder()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        tapGesture.cancelsTouchesInView = false
+        tableView.addGestureRecognizer(tapGesture)
         print(applicationDocumentsDirectory, "this app dir")
+        
+        for key in imageCache.current.imageDict{
+            print(key.key, "key")
+        }
         
     }
     
+    @objc func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        searchBar.searchTextField.resignFirstResponder()
+    }
     
     func yelpURL(searchText: String) -> URL {
         print(searchText, "searched text")
