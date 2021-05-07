@@ -28,9 +28,9 @@ class SearchViewController: UIViewController {
         tableView.addGestureRecognizer(tapGesture)
         print(applicationDocumentsDirectory, "this app dir")
         
-        for key in imageCache.current.imageDict{
-            print(key.key, "key")
-        }
+//        for key in imageCache.current.imageDict{
+//            print(key.key, "key")
+//        }
         
     }
     

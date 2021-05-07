@@ -9,7 +9,11 @@ import UIKit
 
 class photoCell: UICollectionViewCell {
     
-    @IBOutlet weak var photoView: UIImageView!
+    @IBOutlet weak var photoView: UIImageView!{
+        didSet{
+            photoView.layer.cornerRadius = 10
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

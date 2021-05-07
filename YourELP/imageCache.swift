@@ -23,6 +23,7 @@ class imageCache{
     static let current = imageCache()
 
     private init() {
+        print("image cache instantiated")
         imageDict = [String:UIImage]()
         let fileManager = FileManager.default
         let documentsURL = applicationDocumentsDirectory
