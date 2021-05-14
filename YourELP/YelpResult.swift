@@ -9,6 +9,7 @@ import Foundation
 import MapKit
 
 
+
 class YelpResultArray:Codable{
     var businesses:[Business]
 //    var total:Int

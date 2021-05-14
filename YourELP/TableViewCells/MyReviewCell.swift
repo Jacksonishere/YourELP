@@ -43,18 +43,20 @@ class MyReviewCell: UITableViewCell {
 
         
         if let photoNames = review.photoURLS{
-//            for photoName in photoNames{
-//                let photoURL = applicationDocumentsDirectory.appendingPathComponent(photoName)
-//                if let addImage = UIImage(contentsOfFile: photoURL.path){
-//                    reviewImages.append(addImage)
-//                }
-//            }
             for photoName in photoNames{
-                reviewImages.append(imageCache.current.imageDict[photoName]!)
+                let photoURL = applicationDocumentsDirectory.appendingPathComponent(photoName)
+                if let addImage = UIImage(contentsOfFile: photoURL.path){
+                    reviewImages.append(addImage)
+                }
             }
-            if reviewImages.count == review.numPhotos{
-                collectionView.reloadData()
-            }
+            collectionView.reloadData()
+            
+//            for photoName in photoNames{
+//                reviewImages.append(imageCache.current.imageDict[photoName]!)
+//            }
+//            if reviewImages.count == review.numPhotos{
+//                collectionView.reloadData()
+//            }
         }
     }
 }
@@ -67,6 +69,7 @@ extension MyReviewCell: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! photoCell
         cell.configure(forImage: reviewImages[indexPath.row])
+    
         return cell
     }
     

@@ -63,27 +63,27 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
         return sectionInfo.name
     }
 
-     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let labelRect = CGRect(x: 4, y: tableView.sectionHeaderHeight - 14, width: view.frame.width, height: 14)
-        let label = UILabel(frame: labelRect)
-        label.font = UIFont.boldSystemFont(ofSize: 13)
-
-        label.text = self.tableView(tableView, titleForHeaderInSection: section)
-
-//      label.textColor = UIColor(white: 1.0, alpha: 0.6)
-        label.backgroundColor = UIColor.clear
-
-        let separatorRect = CGRect(x: 15, y: tableView.sectionHeaderHeight - 0.5, width: tableView.bounds.size.width - 15, height: 0.5)
-        let separator = UIView(frame: separatorRect)
-        separator.backgroundColor = tableView.separatorColor
-
-        let viewRect = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.sectionHeaderHeight)
-        
-        let view = UIView(frame: viewRect)
-        view.addSubview(label)
-        view.addSubview(separator)
-        return view
-    }
+//     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let labelRect = CGRect(x: 4, y: tableView.sectionHeaderHeight - 14, width: view.frame.width, height: 14)
+//        let label = UILabel(frame: labelRect)
+//        label.font = UIFont.boldSystemFont(ofSize: 13)
+//
+//        label.text = self.tableView(tableView, titleForHeaderInSection: section)
+//
+////      label.textColor = UIColor(white: 1.0, alpha: 0.6)
+//        label.backgroundColor = UIColor.clear
+//
+//        let separatorRect = CGRect(x: 15, y: tableView.sectionHeaderHeight - 0.5, width: tableView.bounds.size.width - 15, height: 0.5)
+//        let separator = UIView(frame: separatorRect)
+//        separator.backgroundColor = tableView.separatorColor
+//
+//        let viewRect = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.sectionHeaderHeight)
+//        
+//        let view = UIView(frame: viewRect)
+//        view.addSubview(label)
+//        view.addSubview(separator)
+//        return view
+//    }
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let reviewsPerCate = fetchedResultsController.sections![section]
@@ -142,9 +142,9 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
             try managedObjectContext.save()
             afterDelay(2.0) {
                 hudView.hide()
-                for key in imageCache.current.imageDict{
-                    print(key.key, "current key")
-                }
+//                for key in imageCache.current.imageDict{
+//                    print(key.key, "current key")
+//                }
             }
         }
         catch {

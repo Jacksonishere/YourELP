@@ -153,6 +153,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             review.businessID = businessID
             review.businessAddress = businessAddress
             review.photoURLS = nil
+            
         }
         review.rating = userRating
         review.businessName = businessName
@@ -214,9 +215,9 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             playSound()
             afterDelay(2.0) {
                 hudView.hide()
-                for key in imageCache.current.imageDict{
-                    print(key.key, "current key")
-                }
+//                for key in imageCache.current.imageDict{
+//                    print(key.key, "current key")
+//                }
                 self.delegate?.finishedAdding()
                 self.navigationController?.popViewController(animated: true)
             }
@@ -254,9 +255,9 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             afterDelay(2.0) {
                 hudView.hide()
                 self.delegate?.finishedDeleting()
-                for key in imageCache.current.imageDict{
-                    print(key.key, "current key")
-                }
+//                for key in imageCache.current.imageDict{
+//                    print(key.key, "current key")
+//                }
                 self.navigationController?.popViewController(animated: true)
             }
         }
@@ -280,7 +281,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         if let data = image.jpegData(compressionQuality: 0.5) {
             do {
                 try data.write(to: url, options: .atomic)
-                imageCache.current.imageDict[filename] = image
+//                imageCache.current.imageDict[filename] = image
             }
             catch {
                 print("Error writing file: \(error)")

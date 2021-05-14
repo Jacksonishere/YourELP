@@ -13,17 +13,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     lazy var managedObjectContext = persistentContainer.viewContext
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let tabController = window!.rootViewController as! UITabBarController
-        if let tabViewControllers = tabController.viewControllers {
-          // First tab
-          var navController = tabViewControllers[0] as! UINavigationController
-          let controller1 = navController.viewControllers.first as! SearchViewController
-          controller1.managedObjectContext = managedObjectContext
-          // Second tab
-          navController = tabViewControllers[1] as! UINavigationController
-          let controller2 = navController.viewControllers.first as! MyReviewsViewController
-          controller2.managedObjectContext = managedObjectContext
-        }
+        
+        let initialVC = window!.rootViewController as! InitialViewController
+        initialVC.managedObjectContext = managedObjectContext
+        
+//        if let tabViewControllers = tabController.viewControllers {
+//          // First tab
+//          var navController = tabViewControllers[0] as! UINavigationController
+//          let controller1 = navController.viewControllers.first as! SearchViewController
+//          controller1.managedObjectContext = managedObjectContext
+//          // Second tab
+//          navController = tabViewControllers[1] as! UINavigationController
+//          let controller2 = navController.viewControllers.first as! MyReviewsViewController
+//          controller2.managedObjectContext = managedObjectContext
+//        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

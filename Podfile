@@ -8,4 +8,5 @@ target 'YourELP' do
   # Pods for YourELP
 pod 'Cosmos'
 pod 'ImagePicker'
+pod 'AlamofireImage'
 end

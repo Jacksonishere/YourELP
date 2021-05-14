@@ -18,6 +18,7 @@ class BusinessResultCell: UITableViewCell {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var restaurantImage: UIImageView!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,10 +37,13 @@ class BusinessResultCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(forbusiness business:Business){
+    func configure(forbusiness business:Business, fordistance dist:Double){
         nameLabel.text = business.name
         phoneLabel.text = business.display_phone
         reviewsLabel.text = String(business.rating)
+        var distMiles = String(dist)
+        distMiles.append(" mi")
+        distanceLabel.text = distMiles
         
         var displayAddress = ""
         displayAddress.displayAddress(address: business.location.display_address, separatedBy: "\n")

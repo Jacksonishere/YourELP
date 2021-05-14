@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 extension String{
     mutating func displayAddress(address: [String], separatedBy separator: String) {
@@ -26,5 +27,33 @@ extension String{
         var dateSplit = self.components(separatedBy: "-")
         dateSplit[2].removeLast(dateSplit[2].count - 2)
         self = dateSplit[1] + "/" + dateSplit[2] + "/" + dateSplit[0]
+    }
+    
+    init(forPlacemark placemark: CLPlacemark) {
+        var initStr = "Current Address:\n"
+        let streetInfo = [
+            placemark.subThoroughfare,
+            placemark.thoroughfare,
+        ].compactMap{$0}.joined(separator: " ")
+        
+        initStr.append(streetInfo)
+        initStr += "\n"
+        
+        let cityInfo = [
+            placemark.subLocality,
+            placemark.locality,
+        ].compactMap{$0}.joined(separator: " ")
+        
+        initStr.append(cityInfo)
+        initStr += "\n"
+        
+        let zipInfo = [
+            placemark.postalCode
+        ].compactMap{$0}.joined(separator: " ")
+        
+        initStr.append(zipInfo)
+        
+        print(initStr)
+        self.init(initStr)
     }
 }

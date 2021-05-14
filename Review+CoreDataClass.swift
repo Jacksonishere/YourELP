@@ -17,7 +17,7 @@ public class Review: NSManagedObject {
 //    
     var numPhotos: Int {
         if photoURLS != nil{
-            print(photoURLS!.count, "num photos")
+//            print(photoURLS!.count, "num photos")
             return photoURLS!.count
         }
         else{
@@ -29,7 +29,7 @@ public class Review: NSManagedObject {
             do {
                 let photoURL = photoURLS![numPhotos - i - 1]
                 try FileManager.default.removeItem(at: applicationDocumentsDirectory.appendingPathComponent(photoURL))
-                imageCache.current.imageDict[photoURL] = nil
+//                imageCache.current.imageDict[photoURL] = nil
             }
             catch {
                 print("Error removing file: \(error)")

@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 class SearchViewController: UIViewController {
 
@@ -19,6 +20,11 @@ class SearchViewController: UIViewController {
     var isLoading = false
     var dataTask: URLSessionDataTask?
     
+    var currAddress:String!
+    var currAddressCoord:CLLocationCoordinate2D!
+    
+    var distanceDict = [String:Double]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.becomeFirstResponder()
@@ -28,9 +34,9 @@ class SearchViewController: UIViewController {
         tableView.addGestureRecognizer(tapGesture)
         print(applicationDocumentsDirectory, "this app dir")
         
-        for key in imageCache.current.imageDict{
-            print(key.key, "key")
-        }
+//        for key in imageCache.current.imageDict{
+//            print(key.key, "key")
+//        }
         
     }
     
@@ -41,10 +47,12 @@ class SearchViewController: UIViewController {
     func yelpURL(searchText: String) -> URL {
         print(searchText, "searched text")
         let encodedBusiness = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        let address = "brighton beach"
-        let encodedAddress = address.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+//        let address = "brighton beach"
+//        let encodedAddress = currAddress.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        let addressLat = currAddressCoord.latitude
+        let addressLong = currAddressCoord.longitude
         //right now urlstring brighton beach but will change
-        let urlString = "https://api.yelp.com/v3/businesses/search?term=\(encodedBusiness)&location=\(encodedAddress)"
+        let urlString = "https://api.yelp.com/v3/businesses/search?term=\(encodedBusiness)&latitude=\(addressLat)&longitude=\(addressLong)"
         let url = URL(string: urlString)
         return url!
     }
@@ -96,9 +104,51 @@ extension SearchViewController: UISearchBarDelegate {
                 else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 {
                     if let data = data {
                         self.businessResults = self.parse(data: data)
-                        DispatchQueue.main.async {
-                            self.isLoading = false
-                            self.tableView.reloadData()
+                        
+                        let dispatchQueue = DispatchQueue(label: "anything", attributes: .concurrent)
+                        let dispatchGroup = DispatchGroup()
+                        
+                        
+                        var i = 0
+                        let startTime = CFAbsoluteTimeGetCurrent()
+                        dispatchQueue.async {
+                            for business in self.businessResults{
+                                print("entering \(i)")
+                                dispatchGroup.enter()
+                                self.calculateDistance(to: business.coordinates.coordinate){ dist in
+                                    self.distanceDict[business.id] = dist
+                                    print("leaving \(i)")
+                                    dispatchGroup.leave()
+                                }
+                                i += 1
+                            }
+                        }
+//                        let startTime = CFAbsoluteTimeGetCurrent()
+//                        for business in self.businessResults{
+//                            print("entering \(i)")
+//                            dispatchQueue.async {
+//                                let myi = i
+//                                dispatchGroup.enter()
+//                                self.calculateDistance(to: business.coordinates.coordinate){
+//                                    dist in
+//                                    DispatchQueue.main.async {
+//                                        self.distanceDict[business.id] = dist
+//                                    }
+//
+//                                    print("leaving \(myi)")
+//                                    dispatchGroup.leave()
+//                                }
+//                            }
+//                            i += 1
+//                        }
+                        
+                        dispatchGroup.notify(queue: dispatchQueue){
+                            DispatchQueue.main.async {
+                                print(CFAbsoluteTimeGetCurrent() - startTime, "total time")
+                                print("finished calculating stuff")
+                                self.isLoading = false
+                                self.tableView.reloadData()
+                            }
                         }
                         return
                     }
@@ -114,6 +164,19 @@ extension SearchViewController: UISearchBarDelegate {
             }
             dataTask?.resume()
         }
+    }
+    
+    func calculateDistance(to: CLLocationCoordinate2D, finished: (Double) -> Void) -> Void{
+        let from = CLLocation(latitude: currAddressCoord.latitude, longitude: currAddressCoord.longitude)
+        let to = CLLocation(latitude: to.latitude, longitude: to.longitude)
+        
+        var distance = from.distance(from: to)
+        
+        distance = (distance * 0.00621371192)
+        distance.round()
+        distance = distance/10
+        
+        finished(distance)
     }
 }
 
@@ -146,7 +209,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessResultCell", for: indexPath) as! BusinessResultCell
             let businessResult = businessResults[indexPath.row]
-            cell.configure(forbusiness: businessResult)
+            let distance = distanceDict[businessResult.id]
+            cell.configure(forbusiness: businessResult, fordistance: distance!)
             return cell
         }
     }
