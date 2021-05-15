@@ -26,6 +26,8 @@ class SearchViewController: UIViewController {
     var distanceDict = [String:Double]()
     
     override func viewDidLoad() {
+        print(currAddress!, "address in searechvc")
+        print("viewdidload")
         super.viewDidLoad()
         searchBar.becomeFirstResponder()
         
@@ -69,6 +71,10 @@ class SearchViewController: UIViewController {
             return []
         }
     }
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }
 
 // MARK: - Search Bar Delegate
@@ -228,6 +234,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
             vc.managedObjectContext = managedObjectContext
         }
     }
+    
 }
 
 

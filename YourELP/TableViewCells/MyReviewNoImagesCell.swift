@@ -14,6 +14,7 @@ class MyReviewNoImagesCell: UITableViewCell {
     @IBOutlet weak var businessAddress: UILabel!
     @IBOutlet weak var myRating: CosmosView!
     @IBOutlet weak var myDesc: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,10 +28,14 @@ class MyReviewNoImagesCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(forReview review:Review){
+    func configure(forReview review:Review, forDistance dist:Double){
         businessName.text = review.businessName
         myDesc.text = review.reviewDesc
         myRating.rating = review.rating
+        
+        var distMiles = String(dist)
+        distMiles.append(" mi")
+        distanceLabel.text = distMiles
         
         var businessAddressConvert = ""
         businessAddressConvert.displayAddress(address: review.businessAddress, separatedBy: "\n")

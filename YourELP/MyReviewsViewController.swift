@@ -8,19 +8,45 @@
 import UIKit
 import Cosmos
 import CoreData
+import CoreLocation
 
 class MyReviewsViewController: UIViewController{
 
     var managedObjectContext: NSManagedObjectContext!
     var privateReviews = [Review]()
+    var distanceDict = [String:Double]()
+    var currAddressCoord:CLLocationCoordinate2D!
 
     @IBOutlet weak var tableView: UITableView!
+    
+    func calculateDistance(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> Double{
+        let from = CLLocation(latitude: from.latitude, longitude: from.longitude)
+        let to = CLLocation(latitude: to.latitude, longitude: to.longitude)
+        
+        var distance = from.distance(from: to)
+        
+        distance = (distance * 0.00621371192)
+        distance.round()
+        distance = distance/10
+        
+        return distance
+    }
     
     lazy var fetchedResultsController: NSFetchedResultsController<Review> = {
         
         let fetchRequest = NSFetchRequest<Review>()
         fetchRequest.entity = Review.entity()
 
+        do {
+            privateReviews = try managedObjectContext.fetch(fetchRequest)
+            for review in privateReviews{
+                distanceDict[review.businessID] = calculateDistance(from: currAddressCoord, to: CLLocationCoordinate2D(latitude: review.businessLat, longitude: review.businessLong))
+            }
+        }
+        catch {
+            fatalError("could not fetch")
+        }
+        
         let sort1 = NSSortDescriptor(key: "category", ascending: true)
         let sort2 = NSSortDescriptor(key: "rating", ascending: true)
         fetchRequest.sortDescriptors = [sort1, sort2]
@@ -40,6 +66,7 @@ class MyReviewsViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchReviews()
+        
     }
     
     func fetchReviews(){
@@ -63,28 +90,6 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
         return sectionInfo.name
     }
 
-//     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let labelRect = CGRect(x: 4, y: tableView.sectionHeaderHeight - 14, width: view.frame.width, height: 14)
-//        let label = UILabel(frame: labelRect)
-//        label.font = UIFont.boldSystemFont(ofSize: 13)
-//
-//        label.text = self.tableView(tableView, titleForHeaderInSection: section)
-//
-////      label.textColor = UIColor(white: 1.0, alpha: 0.6)
-//        label.backgroundColor = UIColor.clear
-//
-//        let separatorRect = CGRect(x: 15, y: tableView.sectionHeaderHeight - 0.5, width: tableView.bounds.size.width - 15, height: 0.5)
-//        let separator = UIView(frame: separatorRect)
-//        separator.backgroundColor = tableView.separatorColor
-//
-//        let viewRect = CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.sectionHeaderHeight)
-//        
-//        let view = UIView(frame: viewRect)
-//        view.addSubview(label)
-//        view.addSubview(separator)
-//        return view
-//    }
-
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let reviewsPerCate = fetchedResultsController.sections![section]
         return reviewsPerCate.numberOfObjects
@@ -95,13 +100,13 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
         
         if myReview.numPhotos == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewNoImagesCell", for: indexPath) as! MyReviewNoImagesCell
-            cell.configure(forReview: myReview)
+            cell.configure(forReview: myReview, forDistance: distanceDict[myReview.businessID]!)
             cell.selectionStyle = .none
             return cell
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewCell", for: indexPath) as! MyReviewCell
-            cell.configure(forReview: myReview)
+            cell.configure(forReview: myReview, forDistance: distanceDict[myReview.businessID]!)
             cell.selectionStyle = .none
             return cell
         }
@@ -174,6 +179,9 @@ extension MyReviewsViewController: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             print("*** NSFetchedResultsChangeInsert (object)")
+            let review = controller.object(at: newIndexPath!) as! Review
+            
+            distanceDict[review.businessID] = calculateDistance(from: currAddressCoord, to: CLLocationCoordinate2D(latitude: review.businessLat, longitude: review.businessLong))
             tableView.insertRows(at: [newIndexPath!], with: .fade)
 
         case .delete:
@@ -184,7 +192,7 @@ extension MyReviewsViewController: NSFetchedResultsControllerDelegate {
             print("*** NSFetchedResultsChangeUpdate (object)")
             if let cell = tableView.cellForRow(at: indexPath!) as? MyReviewCell {
                 let review = controller.object(at: indexPath!) as! Review
-                cell.configure(forReview: review)
+                cell.configure(forReview: review, forDistance: distanceDict[review.businessID]!)
             }
 
         case .move:

@@ -23,6 +23,8 @@ extension Review {
     @NSManaged public var businessID: String
     @NSManaged public var category: String
     @NSManaged public var reviewDesc: String
+    @NSManaged public var businessLat: Double
+    @NSManaged public var businessLong: Double
 
 }
 

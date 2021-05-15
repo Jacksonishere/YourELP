@@ -24,6 +24,7 @@ public class Review: NSManagedObject {
             return 0
         }
     }
+    
     func removePhotoFiles(numtoRv numRv:Int) {
         for i in 0 ..< numRv{
             do {

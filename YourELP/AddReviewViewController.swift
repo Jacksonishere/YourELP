@@ -62,6 +62,8 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
     var categoryName:String = ""
     var businessID:String = ""
     var businessAddress = [String]()
+    var businessLat:Double = 0
+    var businessLong:Double = 0
     
     var selectedImages:[UIImage]?
     var editReviewImages:[UIImage]?
@@ -153,7 +155,8 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             review.businessID = businessID
             review.businessAddress = businessAddress
             review.photoURLS = nil
-            
+            review.businessLat = businessLat
+            review.businessLong = businessLong
         }
         review.rating = userRating
         review.businessName = businessName

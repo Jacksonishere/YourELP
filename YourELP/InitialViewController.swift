@@ -45,6 +45,21 @@ class InitialViewController: UIViewController {
             EnterAddress.isHidden = true
         }
     }
+    
+    var loadedOnce = false
+    override func viewWillAppear(_ animated: Bool) {
+        if !loadedOnce{
+            loadedOnce.toggle()
+        }
+        else{
+            CurrentAddress.isHidden = false
+            currentAddressLabel.text = currentAddy
+            newAddressContinueButton.isEnabled = false
+            addressTextField.text = nil
+            EnterAddress.isHidden = true
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,6 +85,8 @@ class InitialViewController: UIViewController {
             
             destinationVC.currAddress = currentAddy
             destinationVC.currAddressCoord = currAddyCoord
+            
+            otherVC.currAddressCoord = currAddyCoord
             
             destinationVC.managedObjectContext = managedObjectContext
             otherVC.managedObjectContext = managedObjectContext

@@ -15,6 +15,7 @@ class MyReviewCell: UITableViewCell {
     @IBOutlet weak var myDesc: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var businessAddress: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     var reviewImages = [UIImage]()
     
@@ -33,13 +34,17 @@ class MyReviewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
 
-    func configure(forReview review:Review){
+    func configure(forReview review:Review, forDistance dist:Double){
         businessName.text = review.businessName
         myDesc.text = review.reviewDesc
         myRating.rating = review.rating
         var businessAddressConvert = ""
         businessAddressConvert.displayAddress(address: review.businessAddress, separatedBy: "\n")
         businessAddress.text = businessAddressConvert
+        
+        var distMiles = String(dist)
+        distMiles.append(" mi")
+        distanceLabel.text = distMiles
 
         
         if let photoNames = review.photoURLS{
