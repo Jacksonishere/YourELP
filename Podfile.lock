@@ -3,11 +3,13 @@ PODS:
   - AlamofireImage (4.1.0):
     - Alamofire (~> 5.1)
   - Cosmos (23.0.0)
+  - DropDown (2.3.13)
   - ImagePicker (3.2.0)
 
 DEPENDENCIES:
   - AlamofireImage
   - Cosmos
+  - DropDown
   - ImagePicker
 
 SPEC REPOS:
@@ -15,14 +17,16 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - Cosmos
+    - DropDown
     - ImagePicker
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   AlamofireImage: c4a2ba349885fb3064feb74d2e547bd42ce9be10
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
   ImagePicker: 1d950bbb2422548ed58791b4ec7f42fe42920511
 
-PODFILE CHECKSUM: 3a3909e61b63b04f61df3d7d01ddd17ab33ba9df
+PODFILE CHECKSUM: 8a2b7072aa49f55e05624dc5c529a291255d80b2
 
 COCOAPODS: 1.10.1

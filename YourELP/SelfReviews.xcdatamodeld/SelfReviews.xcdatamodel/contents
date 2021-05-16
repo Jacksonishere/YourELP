@@ -3,8 +3,8 @@
     <entity name="Review" representedClassName="Review" syncable="YES">
         <attribute name="businessAddress" attributeType="Transformable" customClassName="[String]"/>
         <attribute name="businessID" optional="YES" attributeType="String"/>
-        <attribute name="businessLat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="businessLong" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="businessLat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="businessLong" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="businessName" attributeType="String"/>
         <attribute name="category" optional="YES" attributeType="String"/>
         <attribute name="photoURLS" optional="YES" attributeType="Transformable" valueTransformerName="" customClassName="[String]"/>

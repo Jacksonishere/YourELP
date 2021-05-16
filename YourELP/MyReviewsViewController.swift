@@ -17,6 +17,7 @@ class MyReviewsViewController: UIViewController{
     var distanceDict = [String:Double]()
     var currAddressCoord:CLLocationCoordinate2D!
 
+    @IBOutlet weak var filterButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
     func calculateDistance(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> Double{
@@ -72,6 +73,9 @@ class MyReviewsViewController: UIViewController{
     func fetchReviews(){
         do{
             try fetchedResultsController.performFetch()
+            if fetchedResultsController.sections!.count == 0{
+                filterButton.isEnabled = false
+            }
         }
         catch{
             fatalError("Failed to fetch")
@@ -166,6 +170,18 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
                 vc.managedObjectContext = managedObjectContext
             }
         }
+        else if segue.identifier == "filter"{
+//            let vc = segue.destination as! UINavigationController
+//            let destinationvc = vc.viewControllers.first as! FilterTableViewController
+//            for category in fetchedResultsController.sections!{
+//                destinationvc.filterCategories.append(category.name)
+//            }
+            
+            let vc = segue.destination as! FilterViewController
+            for category in fetchedResultsController.sections!{
+                vc.filterCategories.append(category.name)
+            }
+        }
     }
 }
 
@@ -181,11 +197,23 @@ extension MyReviewsViewController: NSFetchedResultsControllerDelegate {
             print("*** NSFetchedResultsChangeInsert (object)")
             let review = controller.object(at: newIndexPath!) as! Review
             
+            print("reviews count after insert\(privateReviews.count)")
+            privateReviews.append(review)
             distanceDict[review.businessID] = calculateDistance(from: currAddressCoord, to: CLLocationCoordinate2D(latitude: review.businessLat, longitude: review.businessLong))
+            
+            filterButton.isEnabled = false
             tableView.insertRows(at: [newIndexPath!], with: .fade)
 
         case .delete:
             print("*** NSFetchedResultsChangeDelete (object)")
+            let review = controller.object(at: newIndexPath!) as! Review
+            privateReviews = privateReviews.filter({ $0 !== review})
+            distanceDict[review.businessID] = nil
+            
+            print("reviews count after delete \(privateReviews.count)")
+            if privateReviews.count == 0{
+                filterButton.isEnabled = false
+            }
             tableView.deleteRows(at: [indexPath!], with: .fade)
 
         case .update:
@@ -228,5 +256,13 @@ extension MyReviewsViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
+extension MyReviewsViewController:filtersSelectedDelegate{
+    func filtersSelected(forFilterCategory: String, forFilterRating: Double, forFilterDistance: Double?) {
+//        if let filterCat = forFilterCategory, let filterRating = forFilterRating, let filterDist = forFilterDistance{
+//            print("filter by cat \(filterCat), by rating \(filterRating), by distance \(filterDist)")
+//        }
+        print("filter by cat \(forFilterCategory), by rating \(forFilterRating), by distance \(forFilterDistance ?? 0)")
+    }
+}
 
 

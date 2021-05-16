@@ -11,10 +11,14 @@ import CoreData
 
 class MapViewController: UIViewController, AddReviewDelegate {
     
+    deinit {
+        print("Destroying map controller")
+    }
     func finishedAdding() {
         if let starPath = starIndexPath{
             let cell = tableView.cellForRow(at: starPath) as! MapCell
             cell.highlightStar()
+            navigationController?.popViewController(animated: true)
         }
         else{
             print("START PATH NIL")
@@ -25,6 +29,7 @@ class MapViewController: UIViewController, AddReviewDelegate {
         if let starPath = starIndexPath{
             let cell = tableView.cellForRow(at: starPath) as! MapCell
             cell.dehighlightStar()
+            navigationController?.popViewController(animated: true)
         }
         else{
             print("START PATH NIL")

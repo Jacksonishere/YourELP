@@ -7,12 +7,18 @@
 
 import UIKit
 import CoreData
+import DropDown
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     lazy var managedObjectContext = persistentContainer.viewContext
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+
+        DropDown.startListeningToKeyboard()
+
         
         let initialVC = window!.rootViewController as! InitialViewController
         initialVC.managedObjectContext = managedObjectContext

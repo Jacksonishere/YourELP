@@ -36,6 +36,7 @@ extension String{
             placemark.thoroughfare,
         ].compactMap{$0}.joined(separator: " ")
         
+    
         initStr.append(streetInfo)
         initStr += "\n"
         
@@ -44,16 +45,20 @@ extension String{
             placemark.locality,
         ].compactMap{$0}.joined(separator: " ")
         
-        initStr.append(cityInfo)
-        initStr += "\n"
+        print("city info \(cityInfo)")
+        if cityInfo != ""{
+            initStr.append(cityInfo)
+            initStr += "\n"
+        }
         
         let zipInfo = [
             placemark.postalCode
         ].compactMap{$0}.joined(separator: " ")
         
+        print("zip info \(zipInfo)")
         initStr.append(zipInfo)
         
-        print(initStr)
+//        print(initStr)
         self.init(initStr)
     }
 }

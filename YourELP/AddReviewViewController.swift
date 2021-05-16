@@ -75,15 +75,18 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
     //use didset to set the other properties
     var reviewtoEdit:Review? {
         didSet{
-            if let review = reviewtoEdit, let loadPhotos = review.photoURLS{
-                editReviewImages = [UIImage]()
-                
-                for photoURLExtensions in loadPhotos{
-                    let photoURL = applicationDocumentsDirectory.appendingPathComponent(photoURLExtensions)
-                    if let addImage = UIImage(contentsOfFile: photoURL.path){
-                        editReviewImages!.append(addImage)
+            if let review = reviewtoEdit{
+                print("passed in review to edit")
+                if let loadPhotos = review.photoURLS{
+                    editReviewImages = [UIImage]()
+                    for photoURLExtensions in loadPhotos{
+                        let photoURL = applicationDocumentsDirectory.appendingPathComponent(photoURLExtensions)
+                        if let addImage = UIImage(contentsOfFile: photoURL.path){
+                            editReviewImages!.append(addImage)
+                        }
                     }
                 }
+                
                 businessName = review.businessName
                 userRating = review.rating
                 
@@ -99,7 +102,13 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         if reviewtoEdit != nil{
             print("addreview vc editing")
             deleteRevButton.isEnabled = true
-            descView.text = reviewtoEdit!.reviewDesc
+            if reviewtoEdit!.reviewDesc == ""{
+                descView.text = "Write about your experience!"
+                descView.textColor = UIColor.lightGray
+            }
+            else{
+                descView.text = reviewtoEdit!.reviewDesc
+            }
         }
         else{
             print("addreview vc adding")
@@ -161,7 +170,8 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         review.rating = userRating
         review.businessName = businessName
         if descView.text == "Write about your experience!"{
-            descView.text = ""
+//            descView.text = ""
+            review.reviewDesc = ""
         }
         else{
             review.reviewDesc = descView.text

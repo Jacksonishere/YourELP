@@ -59,13 +59,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="p73-Jb-UaA">
                                                     <rect key="frame" x="159.5" y="12" width="95.5" height="20"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7b-4s-Mia">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K7b-4s-Mia">
                                                             <rect key="frame" x="0.0" y="0.0" width="67.5" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" name="ArtistName"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ROz-f5-3UW">
+                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ROz-f5-3UW">
                                                             <rect key="frame" x="75.5" y="0.0" width="20" height="20"/>
                                                         </activityIndicatorView>
                                                     </subviews>
@@ -255,13 +255,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dUk-l2-Qkr">
                                                     <rect key="frame" x="159.5" y="12" width="95.5" height="20"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcW-XR-xIm">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcW-XR-xIm">
                                                             <rect key="frame" x="0.0" y="0.0" width="67.5" height="20"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" name="ArtistName"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="eyv-fc-ThA">
+                                                        <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="eyv-fc-ThA">
                                                             <rect key="frame" x="75.5" y="0.0" width="20" height="20"/>
                                                         </activityIndicatorView>
                                                     </subviews>
@@ -531,20 +531,20 @@
                         <viewLayoutGuide key="safeArea" id="hD6-li-qC8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hD6-li-qC8" firstAttribute="trailing" secondItem="Z42-3e-dVF" secondAttribute="trailing" constant="20" id="ABf-f9-Azw"/>
                             <constraint firstItem="Glg-yv-xp7" firstAttribute="top" secondItem="EdG-Ex-hnB" secondAttribute="bottom" constant="8" id="L6V-H3-SM8"/>
                             <constraint firstItem="EdG-Ex-hnB" firstAttribute="top" secondItem="nhI-Ty-JvF" secondAttribute="bottom" constant="8" id="LTM-7E-xKH"/>
+                            <constraint firstAttribute="bottom" secondItem="Z42-3e-dVF" secondAttribute="bottom" constant="26" id="MCm-oS-35Y"/>
                             <constraint firstItem="nhI-Ty-JvF" firstAttribute="leading" secondItem="hD6-li-qC8" secondAttribute="leading" constant="20" id="Mnc-FP-F9C"/>
                             <constraint firstItem="nhI-Ty-JvF" firstAttribute="top" secondItem="hD6-li-qC8" secondAttribute="top" constant="20" id="WOV-GT-l5c"/>
+                            <constraint firstItem="Z42-3e-dVF" firstAttribute="leading" secondItem="hD6-li-qC8" secondAttribute="leading" constant="20" id="Xuj-Sb-zsT"/>
                             <constraint firstItem="EdG-Ex-hnB" firstAttribute="leading" secondItem="hD6-li-qC8" secondAttribute="leading" constant="20" id="c2r-AZ-eL3"/>
                             <constraint firstItem="wyk-wb-y8F" firstAttribute="leading" secondItem="hD6-li-qC8" secondAttribute="leading" constant="20" id="epR-KQ-COh"/>
                             <constraint firstItem="hD6-li-qC8" firstAttribute="trailing" secondItem="wyk-wb-y8F" secondAttribute="trailing" constant="20" id="fed-cP-ze9"/>
                             <constraint firstItem="Glg-yv-xp7" firstAttribute="leading" secondItem="hD6-li-qC8" secondAttribute="leading" constant="20" id="gUt-xV-IL9"/>
                             <constraint firstItem="wyk-wb-y8F" firstAttribute="top" secondItem="Glg-yv-xp7" secondAttribute="bottom" constant="8" id="l9a-4F-dCD"/>
-                            <constraint firstItem="Z42-3e-dVF" firstAttribute="bottom" secondItem="hD6-li-qC8" secondAttribute="bottom" constant="8" id="pP3-NK-bNJ"/>
+                            <constraint firstItem="hD6-li-qC8" firstAttribute="trailing" secondItem="Z42-3e-dVF" secondAttribute="trailing" constant="20" id="lYy-PC-InV"/>
                             <constraint firstItem="hD6-li-qC8" firstAttribute="trailing" secondItem="Glg-yv-xp7" secondAttribute="trailing" constant="20" id="rmX-Di-ZfN"/>
                             <constraint firstItem="hD6-li-qC8" firstAttribute="trailing" secondItem="nhI-Ty-JvF" secondAttribute="trailing" constant="20" id="wZp-5X-yJC"/>
-                            <constraint firstItem="Z42-3e-dVF" firstAttribute="leading" secondItem="hD6-li-qC8" secondAttribute="leading" constant="20" id="z8a-ma-hwG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Your Review" largeTitleDisplayMode="never" id="iC2-TA-pgM">
@@ -765,7 +765,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qy3-Qy-GNK">
                                                     <rect key="frame" x="8" y="71" width="67.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mi" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdb-nQ-DBQ">
@@ -797,7 +797,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="businessAddress" destination="gcR-u7-Y6q" id="itG-Fa-f4f"/>
+                                            <outlet property="businessAddress" destination="qy3-Qy-GNK" id="3eK-UR-FJ6"/>
                                             <outlet property="businessName" destination="2TR-gr-rEa" id="dw8-cK-kKj"/>
                                             <outlet property="distanceLabel" destination="Pdb-nQ-DBQ" id="MGT-k0-EbQ"/>
                                             <outlet property="myDesc" destination="gcR-u7-Y6q" id="JFh-rq-AZg"/>
@@ -820,8 +820,15 @@
                             <constraint firstItem="N4f-bF-AVO" firstAttribute="top" secondItem="v7J-dW-tHM" secondAttribute="top" id="gl3-fp-Vh7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Your Reviews" id="poZ-L5-VPZ"/>
+                    <navigationItem key="navigationItem" title="Your Reviews" id="poZ-L5-VPZ">
+                        <barButtonItem key="rightBarButtonItem" title="Filter" id="bKl-gE-7b7">
+                            <connections>
+                                <segue destination="The-4b-6Qh" kind="showDetail" identifier="filter" id="4DS-fb-HBg"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="filterButton" destination="bKl-gE-7b7" id="UpC-eD-IJa"/>
                         <outlet property="tableView" destination="N4f-bF-AVO" id="FhQ-my-kxb"/>
                         <segue destination="P9S-e4-yW5" kind="show" identifier="editReview" id="vDo-CT-4fQ"/>
                     </connections>
@@ -829,6 +836,211 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jk6-en-ySR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1811.594202898551" y="1543.5267857142856"/>
+        </scene>
+        <!--Filter View Controller-->
+        <scene sceneID="Kw4-PI-3E4">
+            <objects>
+                <viewController id="The-4b-6Qh" customClass="FilterViewController" customModule="YourELP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GZ5-Ih-ffk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bMQ-do-Rc7">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+                                <items>
+                                    <navigationItem title="Filter" id="XJ2-pr-rwQ">
+                                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Clear" id="LVX-kf-kZG">
+                                            <connections>
+                                                <action selector="clearFilters:" destination="The-4b-6Qh" id="o39-hS-1Mw"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Apply" id="Svf-KS-6gG">
+                                            <connections>
+                                                <action selector="applyFilters:" destination="The-4b-6Qh" id="E2u-0U-MjJ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="WFs-XR-4Hk">
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RatingFilterCell" id="bxV-7O-WpM" customClass="RatingFilterCell" customModule="YourELP" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bxV-7O-WpM" id="gkC-2y-cqD">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l66-k6-fTJ" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="18" y="12" width="120" height="20"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="l66-k6-fTJ" firstAttribute="leading" secondItem="gkC-2y-cqD" secondAttribute="leading" constant="18" id="37I-M4-mrq"/>
+                                                <constraint firstItem="l66-k6-fTJ" firstAttribute="centerY" secondItem="gkC-2y-cqD" secondAttribute="centerY" id="nok-UE-nzX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cosmosView" destination="l66-k6-fTJ" id="Ta4-vH-PBw"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="distanceFilterCell" id="C6z-PB-QcQ" customClass="distanceFilterCell" customModule="YourELP" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="99" width="414" height="31.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C6z-PB-QcQ" id="781-8Y-BRL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="31.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="ObR-9k-2Sl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="32.5"/>
+                                                    <segments>
+                                                        <segment title="1 mi"/>
+                                                        <segment title="2 mi"/>
+                                                        <segment title="5 mi"/>
+                                                        <segment title="10 mi"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="ObR-9k-2Sl" secondAttribute="bottom" id="IDX-w4-Vgr"/>
+                                                <constraint firstAttribute="trailing" secondItem="ObR-9k-2Sl" secondAttribute="trailing" id="Rgo-jG-Exd"/>
+                                                <constraint firstItem="ObR-9k-2Sl" firstAttribute="leading" secondItem="781-8Y-BRL" secondAttribute="leading" id="dqo-3e-cZV"/>
+                                                <constraint firstItem="ObR-9k-2Sl" firstAttribute="top" secondItem="781-8Y-BRL" secondAttribute="top" id="pTB-Eh-Cca"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="segmentedControl" destination="ObR-9k-2Sl" id="fwr-cp-WUw"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="The-4b-6Qh" id="iBb-TQ-wQs"/>
+                                    <outlet property="delegate" destination="The-4b-6Qh" id="X4b-Ww-xIM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TQz-3H-Njf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bMQ-do-Rc7" firstAttribute="trailing" secondItem="TQz-3H-Njf" secondAttribute="trailing" id="HB2-YC-iVR"/>
+                            <constraint firstItem="bMQ-do-Rc7" firstAttribute="top" secondItem="TQz-3H-Njf" secondAttribute="top" id="OZo-fg-KrF"/>
+                            <constraint firstItem="TQz-3H-Njf" firstAttribute="bottom" secondItem="WFs-XR-4Hk" secondAttribute="bottom" id="eFc-9f-chA"/>
+                            <constraint firstItem="WFs-XR-4Hk" firstAttribute="leading" secondItem="TQz-3H-Njf" secondAttribute="leading" id="lkM-rI-4v8"/>
+                            <constraint firstItem="TQz-3H-Njf" firstAttribute="trailing" secondItem="WFs-XR-4Hk" secondAttribute="trailing" id="paZ-f4-Sik"/>
+                            <constraint firstItem="WFs-XR-4Hk" firstAttribute="top" secondItem="bMQ-do-Rc7" secondAttribute="bottom" id="q4O-TH-fwZ"/>
+                            <constraint firstItem="bMQ-do-Rc7" firstAttribute="leading" secondItem="TQz-3H-Njf" secondAttribute="leading" id="qWB-R6-SQI"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="applyButton" destination="Svf-KS-6gG" id="zeZ-Rw-dr8"/>
+                        <outlet property="clearButton" destination="LVX-kf-kZG" id="fhy-oi-VMA"/>
+                        <outlet property="tableView" destination="WFs-XR-4Hk" id="6LS-bh-JB3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AKA-OC-AfT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2772.4637681159425" y="1562.9464285714284"/>
+        </scene>
+        <!--Filter-->
+        <scene sceneID="rud-ez-hJt">
+            <objects>
+                <tableViewController id="gTL-mp-wMl" customClass="FilterTableViewController" customModule="YourELP" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Cfc-3z-VF5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="By Category" id="PNX-TT-lY6">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryDropDown" id="LMe-kJ-b4I">
+                                        <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LMe-kJ-b4I" id="6au-Ck-jd9">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="By Rating And Below" id="B3t-Bi-cgq">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RatingCell" id="2yR-wX-lZi" customClass="RatingFilterCell" customModule="YourELP" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="155" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2yR-wX-lZi" id="RxI-OJ-gQb">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6OR-Fi-XDg" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="18" y="12" width="120" height="20"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6OR-Fi-XDg" firstAttribute="leading" secondItem="RxI-OJ-gQb" secondAttribute="leading" constant="18" id="JNE-hy-qaL"/>
+                                                <constraint firstItem="6OR-Fi-XDg" firstAttribute="centerY" secondItem="RxI-OJ-gQb" secondAttribute="centerY" id="sN7-uJ-bZU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cosmosView" destination="6OR-Fi-XDg" id="mWv-xl-VAY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Within Distance" id="oJE-ng-Dpo">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="distanceFilterCell" id="0pa-H5-sge" customClass="distanceFilterCell" customModule="YourELP" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="254.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0pa-H5-sge" id="BLG-0e-w23">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="rwm-Xn-6Op">
+                                                    <rect key="frame" x="20" y="6" width="374" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <segments>
+                                                        <segment title="1 mi"/>
+                                                        <segment title="2 mi"/>
+                                                        <segment title="5 mi"/>
+                                                        <segment title="10 mi"/>
+                                                    </segments>
+                                                </segmentedControl>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="segmentedControl" destination="rwm-Xn-6Op" id="31t-AU-Ovy"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="gTL-mp-wMl" id="qbE-CE-x27"/>
+                            <outlet property="delegate" destination="gTL-mp-wMl" id="laj-JX-Nc3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Filter" id="TuN-Lq-XS5">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="hta-4y-FeD"/>
+                        <barButtonItem key="rightBarButtonItem" title="Reset" id="1KX-Gp-yrA"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VZb-VV-7sj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3882.608695652174" y="837.72321428571422"/>
         </scene>
         <!--My Reviews-->
         <scene sceneID="C3Z-dm-Mbf">
@@ -1001,6 +1213,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFF-xk-ivc" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1013.0434782608696" y="79.6875"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q09-aS-Aoy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Va-w7-2Bb" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oVg-K8-ukz">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gTL-mp-wMl" kind="relationship" relationship="rootViewController" id="tYm-W3-A7P"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gec-P2-Cf0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2814" y="838"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
