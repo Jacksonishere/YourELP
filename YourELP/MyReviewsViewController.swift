@@ -14,8 +14,12 @@ class MyReviewsViewController: UIViewController{
 
     var managedObjectContext: NSManagedObjectContext!
     var privateReviews = [Review]()
+    var filteredReviews = [Review]()
+    var filteredCategory = ""
     var distanceDict = [String:Double]()
     var currAddressCoord:CLLocationCoordinate2D!
+    
+    var hasFiltered = false
 
     @IBOutlet weak var filterButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -54,7 +58,7 @@ class MyReviewsViewController: UIViewController{
 
         fetchRequest.fetchBatchSize = 20
 
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "category", cacheName: "MyReviews")
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "category", cacheName: nil)
 
         fetchedResultsController.delegate = self
         return fetchedResultsController
@@ -86,38 +90,71 @@ class MyReviewsViewController: UIViewController{
 extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return fetchedResultsController.sections!.count
+        if !hasFiltered{
+            return fetchedResultsController.sections!.count
+        }
+        else{
+            return 1
+        }
     }
 
      func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionInfo = fetchedResultsController.sections![section]
-        return sectionInfo.name
+        if !hasFiltered{
+            let sectionInfo = fetchedResultsController.sections![section]
+            return sectionInfo.name
+        }
+        else{
+            return filteredCategory
+        }
     }
 
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let reviewsPerCate = fetchedResultsController.sections![section]
-        return reviewsPerCate.numberOfObjects
+        if !hasFiltered{
+            let reviewsPerCate = fetchedResultsController.sections![section]
+            return reviewsPerCate.numberOfObjects
+        }
+        else{
+            return filteredReviews.count
+        }
     }
 
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let myReview = fetchedResultsController.object(at: indexPath)
-        
-        if myReview.numPhotos == 0{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewNoImagesCell", for: indexPath) as! MyReviewNoImagesCell
-            cell.configure(forReview: myReview, forDistance: distanceDict[myReview.businessID]!)
-            cell.selectionStyle = .none
-            return cell
+        if !hasFiltered{
+            let myReview = fetchedResultsController.object(at: indexPath)
+            
+            if myReview.numPhotos == 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewNoImagesCell", for: indexPath) as! MyReviewNoImagesCell
+                cell.configure(forReview: myReview, forDistance: distanceDict[myReview.businessID]!)
+                cell.selectionStyle = .none
+                return cell
+            }
+            else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewCell", for: indexPath) as! MyReviewCell
+                cell.configure(forReview: myReview, forDistance: distanceDict[myReview.businessID]!)
+                cell.selectionStyle = .none
+                return cell
+            }
         }
         else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewCell", for: indexPath) as! MyReviewCell
-            cell.configure(forReview: myReview, forDistance: distanceDict[myReview.businessID]!)
-            cell.selectionStyle = .none
-            return cell
+            let myReview = filteredReviews[indexPath.row]
+            if myReview.numPhotos == 0{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewNoImagesCell", for: indexPath) as! MyReviewNoImagesCell
+                cell.configure(forReview: myReview, forDistance: distanceDict[myReview.businessID]!)
+                cell.selectionStyle = .none
+                return cell
+            }
+            else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewCell", for: indexPath) as! MyReviewCell
+                cell.configure(forReview: myReview, forDistance: distanceDict[myReview.businessID]!)
+                cell.selectionStyle = .none
+                return cell
+            }
         }
     }
 
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let reviewForCell = fetchedResultsController.object(at: indexPath)
+        
         let editReview = UIContextualAction(style: .normal, title: "Edit") { [weak self] (action, view, completionHandler) in
             self?.editReview(forReview: reviewForCell)
             completionHandler(true)
@@ -149,6 +186,14 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
         managedObjectContext.delete(review)
         do {
             try managedObjectContext.save()
+            
+            privateReviews = privateReviews.filter({ $0 !== review})
+            distanceDict[review.businessID] = nil
+
+            print("reviews count after delete \(privateReviews.count)")
+            if privateReviews.count == 0{
+                filterButton.isEnabled = false
+            }
             afterDelay(2.0) {
                 hudView.hide()
 //                for key in imageCache.current.imageDict{
@@ -171,16 +216,11 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
             }
         }
         else if segue.identifier == "filter"{
-//            let vc = segue.destination as! UINavigationController
-//            let destinationvc = vc.viewControllers.first as! FilterTableViewController
-//            for category in fetchedResultsController.sections!{
-//                destinationvc.filterCategories.append(category.name)
-//            }
-            
             let vc = segue.destination as! FilterViewController
             for category in fetchedResultsController.sections!{
                 vc.filterCategories.append(category.name)
             }
+            vc.delegate = self
         }
     }
 }
@@ -201,19 +241,14 @@ extension MyReviewsViewController: NSFetchedResultsControllerDelegate {
             privateReviews.append(review)
             distanceDict[review.businessID] = calculateDistance(from: currAddressCoord, to: CLLocationCoordinate2D(latitude: review.businessLat, longitude: review.businessLong))
             
-            filterButton.isEnabled = false
-            tableView.insertRows(at: [newIndexPath!], with: .fade)
+            filterButton.isEnabled = true
+            
+            if !hasFiltered{
+                tableView.insertRows(at: [newIndexPath!], with: .fade)
+            }
 
         case .delete:
             print("*** NSFetchedResultsChangeDelete (object)")
-            let review = controller.object(at: newIndexPath!) as! Review
-            privateReviews = privateReviews.filter({ $0 !== review})
-            distanceDict[review.businessID] = nil
-            
-            print("reviews count after delete \(privateReviews.count)")
-            if privateReviews.count == 0{
-                filterButton.isEnabled = false
-            }
             tableView.deleteRows(at: [indexPath!], with: .fade)
 
         case .update:
@@ -258,9 +293,28 @@ extension MyReviewsViewController: NSFetchedResultsControllerDelegate {
 
 extension MyReviewsViewController:filtersSelectedDelegate{
     func filtersSelected(forFilterCategory: String, forFilterRating: Double, forFilterDistance: Double?) {
-//        if let filterCat = forFilterCategory, let filterRating = forFilterRating, let filterDist = forFilterDistance{
-//            print("filter by cat \(filterCat), by rating \(filterRating), by distance \(filterDist)")
-//        }
+        
+        hasFiltered = true
+        
+        let fetchRequest = NSFetchRequest<Review>()
+        fetchRequest.entity = Review.entity()
+        
+        fetchRequest.predicate = NSPredicate(format: "category == %@", forFilterCategory)
+        
+//        let categoryPredicate = NSPredicate(format: "category == %@", forFilterCategory)
+//        let ratingPredicate = NSPredicate(format: "NSNumber(value: rating) >= %@", NSNumber(value: forFilterRating))
+//        let andPredicate = NSCompoundPredicate(type: .and, subpredicates: [categoryPredicate, ratingPredicate])
+        
+        do {
+            let results = try managedObjectContext.fetch(fetchRequest)
+            filteredReviews = results
+        }
+        catch let error {
+            print(error.localizedDescription)
+        }
+        
+        tableView.reloadData()
+
         print("filter by cat \(forFilterCategory), by rating \(forFilterRating), by distance \(forFilterDistance ?? 0)")
     }
 }
