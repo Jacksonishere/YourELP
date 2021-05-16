@@ -17,6 +17,9 @@ class MyReviewCell: UITableViewCell {
     @IBOutlet weak var businessAddress: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     
+    deinit{
+        print("destroying cell")
+    }
     var reviewImages = [UIImage]()
     
     override func prepareForReuse() {
@@ -55,13 +58,6 @@ class MyReviewCell: UITableViewCell {
                 }
             }
             collectionView.reloadData()
-            
-//            for photoName in photoNames{
-//                reviewImages.append(imageCache.current.imageDict[photoName]!)
-//            }
-//            if reviewImages.count == review.numPhotos{
-//                collectionView.reloadData()
-//            }
         }
     }
 }

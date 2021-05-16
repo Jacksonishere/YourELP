@@ -53,6 +53,7 @@ class InitialViewController: UIViewController {
         }
         else{
             CurrentAddress.isHidden = false
+            hasCurrAddy = true
             currentAddressLabel.text = currentAddy
             newAddressContinueButton.isEnabled = false
             addressTextField.text = nil

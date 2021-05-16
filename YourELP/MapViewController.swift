@@ -155,7 +155,7 @@ class MapViewController: UIViewController, AddReviewDelegate {
             else{
                 print("adding review")
                 vc.businessName = business.name
-                vc.categoryName = business.categories[0].title
+                vc.categoryName = (business.categories?[0].title) ?? ""
                 vc.businessID = business.id
                 vc.businessAddress = business.location.display_address
                 vc.businessLat = business.coordinates.coordinate.latitude

@@ -21,7 +21,7 @@ public class Business:NSObject, Codable{
     var name:String
     var image_url:String
     var rating:Double
-    var categories:[Category]
+    var categories:[Category]?
     var coordinates:LocationCoordinate
     var price:String?
     var location:address

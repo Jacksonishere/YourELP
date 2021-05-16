@@ -821,6 +821,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Your Reviews" id="poZ-L5-VPZ">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" title="Reset" id="J9E-nm-NA9">
+                            <connections>
+                                <action selector="resetFilters:" destination="MIX-ur-XVh" id="ofu-5V-b8b"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Filter" id="bKl-gE-7b7">
                             <connections>
                                 <segue destination="The-4b-6Qh" kind="showDetail" identifier="filter" id="4DS-fb-HBg"/>
@@ -829,6 +834,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="filterButton" destination="bKl-gE-7b7" id="UpC-eD-IJa"/>
+                        <outlet property="resetFilterButton" destination="J9E-nm-NA9" id="Wz0-Il-x8z"/>
                         <outlet property="tableView" destination="N4f-bF-AVO" id="FhQ-my-kxb"/>
                         <segue destination="P9S-e4-yW5" kind="show" identifier="editReview" id="vDo-CT-4fQ"/>
                     </connections>
