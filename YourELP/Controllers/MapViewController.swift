@@ -10,18 +10,13 @@ import MapKit
 import CoreData
 
 class MapViewController: UIViewController, AddReviewDelegate {
-    
-    deinit {
-        print("Destroying map controller")
-    }
     func finishedAdding() {
         if let starPath = starIndexPath{
             let cell = tableView.cellForRow(at: starPath) as! MapCell
             cell.highlightStar()
-            navigationController?.popViewController(animated: true)
         }
         else{
-            print("START PATH NIL")
+            print("STAR INDEXPATH NIL")
         }
     }
     
@@ -29,10 +24,9 @@ class MapViewController: UIViewController, AddReviewDelegate {
         if let starPath = starIndexPath{
             let cell = tableView.cellForRow(at: starPath) as! MapCell
             cell.dehighlightStar()
-            navigationController?.popViewController(animated: true)
         }
         else{
-            print("START PATH NIL")
+            print("STAR INDEXPATH NIL")
         }
     }
     
@@ -59,13 +53,10 @@ class MapViewController: UIViewController, AddReviewDelegate {
         getPrivateReview()
         performSearch()
     }
-    //if there is private review already, it should highlight the star button.
-    //we add predicate to the fetch request.
-    // MARK: - TO DO: set up the segue so if already has review, star not only highlighted but the private review is also set. so, we pass this onto the add/edit review vc, change the buttons, etc.
+
     func getPrivateReview(){
         let fetchRequest = NSFetchRequest<Review>()
         fetchRequest.entity = Review.entity()
-//        fetchRequest.predicate = NSPredicate(format: "businessName == %@", business.name)
         fetchRequest.predicate = NSPredicate(format: "businessID == %@", business.id)
         
         do {
@@ -215,34 +206,4 @@ extension MapViewController: UITableViewDelegate, UITableViewDataSource{
             }
         }
     }
-    
-    
 }
-//func checkLocationPermission(){
-//    let authStatus = locationManager.authorizationStatus
-//    if authStatus == .notDetermined {
-//        locationManager.requestWhenInUseAuthorization()
-//        return
-//    }
-//    if authStatus == .denied || authStatus == .restricted {
-//        showLocationServicesDeniedAlert()
-//        return
-//    }
-//    mapView.addAnnotation(business.coordinates)
-//    zoomInToBusiness()
-//}
-//
-//func showLocationServicesDeniedAlert() {
-//    let alert = UIAlertController(
-//        title: "Location Services Disabled",
-//        message: "Please enable location services for this app in Settings.",
-//        preferredStyle: .alert)
-//
-//    let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-//        self.navigationController?.popViewController(animated: true)
-//    }
-//    alert.addAction(okAction)
-//
-//    present(alert, animated: true, completion: nil)
-//
-//}

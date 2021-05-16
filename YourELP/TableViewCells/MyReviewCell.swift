@@ -38,6 +38,7 @@ class MyReviewCell: UITableViewCell {
     }
 
     func configure(forReview review:Review, forDistance dist:Double){
+        reviewImages.removeAll()
         businessName.text = review.businessName
         myDesc.text = review.reviewDesc
         myRating.rating = review.rating

@@ -39,7 +39,12 @@ class BusinessResultCell: UITableViewCell {
     
     func configure(forbusiness business:Business, fordistance dist:Double){
         nameLabel.text = business.name
-        phoneLabel.text = business.display_phone
+        if business.display_phone == ""{
+            phoneLabel.text = "No telephone #"
+        }
+        else{
+            phoneLabel.text = business.display_phone
+        }
         reviewsLabel.text = String(business.rating)
         var distMiles = String(dist)
         distMiles.append(" mi")

@@ -47,7 +47,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
     @IBOutlet weak var businessLabel: UILabel!
     @IBOutlet weak var descView: UITextView!
     @IBOutlet weak var cosmoView: CosmosView!
-    @IBOutlet weak var barButton: UIBarButtonItem!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -102,6 +102,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         if reviewtoEdit != nil{
             print("addreview vc editing")
             deleteRevButton.isEnabled = true
+            doneButton.isEnabled = true
             if reviewtoEdit!.reviewDesc == ""{
                 descView.text = "Write about your experience!"
                 descView.textColor = UIColor.lightGray
@@ -124,7 +125,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         
         cosmoView.didTouchCosmos = { [weak self] rating in
             self!.userRating = rating
-            self!.barButton.isEnabled = true
+            self!.doneButton.isEnabled = true
 //            print(rating, "user selected rating")
         }
         businessLabel.text = businessName
@@ -225,12 +226,9 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         do {
             print("about to save context and show delay")
             try managedObjectContext.save()
-            playSound()
+            playSound(type:"success.mp3")
             afterDelay(2.0) {
                 hudView.hide()
-//                for key in imageCache.current.imageDict{
-//                    print(key.key, "current key")
-//                }
                 self.delegate?.finishedAdding()
                 self.navigationController?.popViewController(animated: true)
             }
@@ -248,8 +246,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
             self!.deleteReview()
         }))
 
-        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { [weak self] (action) in
-            print("Cancelled")
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
         }))
 
         present(deleteAlert, animated: true, completion: nil)
@@ -265,12 +262,10 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         managedObjectContext.delete(reviewtoEdit!)
         do {
             try managedObjectContext.save()
+            playSound(type: "delete.mp3")
             afterDelay(2.0) {
                 hudView.hide()
                 self.delegate?.finishedDeleting()
-//                for key in imageCache.current.imageDict{
-//                    print(key.key, "current key")
-//                }
                 self.navigationController?.popViewController(animated: true)
             }
         }
@@ -279,8 +274,8 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         }
     }
     
-    func playSound(){
-        let path = Bundle.main.path(forResource: "success.mp3", ofType:nil)!
+    func playSound(type:String){
+        let path = Bundle.main.path(forResource: type, ofType:nil)!
         let url = URL(fileURLWithPath: path)
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
@@ -294,7 +289,6 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         if let data = image.jpegData(compressionQuality: 0.5) {
             do {
                 try data.write(to: url, options: .atomic)
-//                imageCache.current.imageDict[filename] = image
             }
             catch {
                 print("Error writing file: \(error)")

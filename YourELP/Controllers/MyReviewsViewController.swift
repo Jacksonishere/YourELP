@@ -9,6 +9,7 @@ import UIKit
 import Cosmos
 import CoreData
 import CoreLocation
+import AVFoundation
 
 class MyReviewsViewController: UIViewController{
 
@@ -16,10 +17,10 @@ class MyReviewsViewController: UIViewController{
     var privateReviews = [Review]()
     var distanceDict = [String:Double]()
     var currAddressCoord:CLLocationCoordinate2D!
+    
+    var audioPlayer:AVAudioPlayer!
 
 
-    @IBOutlet weak var filterButton: UIBarButtonItem!
-    @IBOutlet weak var resetFilterButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
     func calculateDistance(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> Double{
@@ -75,33 +76,11 @@ class MyReviewsViewController: UIViewController{
     func fetchReviews(){
         do{
             try fetchedResultsController.performFetch()
-            if fetchedResultsController.sections!.count == 0{
-                filterButton.isEnabled = false
-            }
         }
         catch{
             fatalError("Failed to fetch")
         }
     }
-    
-    @IBAction func resetFilters(_ sender: Any) {
-        fetchedResultsController.fetchRequest.predicate = nil
-        fetchedResultsController.fetchRequest.sortDescriptors = nil
-        
-        let sort1 = NSSortDescriptor(key: "category", ascending: true)
-        let sort2 = NSSortDescriptor(key: "rating", ascending: true)
-        fetchedResultsController.fetchRequest.sortDescriptors = [sort1, sort2]
-
-        do{
-            try fetchedResultsController.performFetch()
-            resetFilterButton.isEnabled = false
-            tableView.reloadData()
-        }
-        catch{
-            print("error reseting filters \(error.localizedDescription)")
-        }
-    }
-    
 }
 
 extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
@@ -147,6 +126,7 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
         
         let removeReview = UIContextualAction(style: .normal, title: "Delete") { [weak self] (action, view, completionHandler) in
             self?.deleteReview(forReview: reviewForCell)
+            self?.playDeletedSound()
             completionHandler(true)
         }
         removeReview.backgroundColor = .systemRed
@@ -175,13 +155,22 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
             try managedObjectContext.save()
             afterDelay(2.0) {
                 hudView.hide()
-//                for key in imageCache.current.imageDict{
-//                    print(key.key, "current key")
-//                }
             }
         }
         catch {
             fatalError("error deleting review")
+        }
+    }
+    
+    func playDeletedSound(){
+        let path = Bundle.main.path(forResource: "deleted.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        }
+        catch {
+            fatalError("Failed to load file")
         }
     }
     
@@ -193,19 +182,6 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
                 vc.reviewtoEdit = editReview as? Review
                 vc.managedObjectContext = managedObjectContext
             }
-        }
-        else if segue.identifier == "filter"{
-//            let vc = segue.destination as! UINavigationController
-//            let destinationvc = vc.viewControllers.first as! FilterTableViewController
-//            for category in fetchedResultsController.sections!{
-//                destinationvc.filterCategories.append(category.name)
-//            }
-            
-            let vc = segue.destination as! FilterViewController
-            for category in fetchedResultsController.sections!{
-                vc.filterCategories.append(category.name)
-            }
-            vc.delegate = self
         }
     }
 }
@@ -220,20 +196,12 @@ extension MyReviewsViewController: NSFetchedResultsControllerDelegate {
         switch type {
         case .insert:
             let review = controller.object(at: newIndexPath!) as! Review
-            
-            print("reviews count after insert\(privateReviews.count)")
             privateReviews.append(review)
             distanceDict[review.businessID] = calculateDistance(from: currAddressCoord, to: CLLocationCoordinate2D(latitude: review.businessLat, longitude: review.businessLong))
-            
-            filterButton.isEnabled = true
             
             tableView.insertRows(at: [newIndexPath!], with: .fade)
 
         case .delete:
-            print("reviews count after delete \(privateReviews.count)")
-            if privateReviews.count == 0{
-                filterButton.isEnabled = false
-            }
             tableView.deleteRows(at: [indexPath!], with: .fade)
 
         case .update:
@@ -267,32 +235,7 @@ extension MyReviewsViewController: NSFetchedResultsControllerDelegate {
     }
 
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        print("*** controllerDidChangeContent")
         tableView.endUpdates()
-    }
-}
-
-extension MyReviewsViewController:filtersSelectedDelegate{
-    func filtersSelected(forFilterCategory: String, forFilterRating: Double, forFilterDistance: Double?) {
-
-        resetFilterButton.isEnabled = true
-        
-        fetchedResultsController.fetchRequest.predicate = nil
-        fetchedResultsController.fetchRequest.sortDescriptors = nil
-        
-        let categoryPredicate = NSPredicate(format: "category == %@", forFilterCategory)
-        fetchedResultsController.fetchRequest.predicate = categoryPredicate
-        let sort1 = NSSortDescriptor(key: "rating", ascending: false)
-        fetchedResultsController.fetchRequest.sortDescriptors = [sort1]
-        
-        do{
-            try fetchedResultsController.performFetch()
-            print("applied filter \(fetchedResultsController.sections!.count)")
-            self.tableView.reloadData()
-        }
-        catch{
-            print("error \(error.localizedDescription)")
-        }
     }
 }
 
