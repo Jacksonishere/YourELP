@@ -191,7 +191,8 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
                     for i in 0 ..< selectedImages.count{
                         saveImage(withImage: selectedImages[i], forURL: docDIR.appendingPathComponent(photoEXT[i]), forFilename: photoEXT[i])
                     }
-                    review.removePhotoFiles(numtoRv: photoEXT.count - selectedImages.count)
+                    let numRemove = photoEXT.count - selectedImages.count
+                    review.removePhotoFiles(numtoRv: numRemove)
                     print("after removing extra", review.photoURLS!)
                 }
                 else{
@@ -200,14 +201,17 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
                         saveImage(withImage: selectedImages[i], forURL: docDIR.appendingPathComponent(photoEXT[i]), forFilename: photoEXT[i])
                     }
                     let diffNumPhotos = selectedImages.count - review.numPhotos
+//                    print("diffnumphotos \(diffNumPhotos), selectedimages \(selectedImages.count), review numphotos \(review.numPhotos)")
                     let photoIDBeg = Review.nextPhotoIDBeginning(numPhotos: diffNumPhotos)
                     for i in 0 ..< diffNumPhotos{
                         let filename = "Photo-\(photoIDBeg + i).jpg"
                         let dirPath = docDIR.appendingPathComponent(filename)
                         //photurls incremented so if selected images is only 1 more than before we appended a new filename to save the image in, its going to try to access selectedimages[selectedimages.count] causing crash
                         review.photoURLS!.append(filename)
-                        saveImage(withImage: selectedImages[review.numPhotos + i - 1], forURL: dirPath, forFilename: filename)
+                        let selectedImageIndex = review.numPhotos - 1
+                        saveImage(withImage: selectedImages[selectedImageIndex], forURL: dirPath, forFilename: filename)
                     }
+                    
                 }
               //new key is 6, puts for 4 and 5
             }
@@ -262,7 +266,7 @@ class AddReviewViewController: UIViewController, ImagePickerDelegate, addImageBu
         managedObjectContext.delete(reviewtoEdit!)
         do {
             try managedObjectContext.save()
-            playSound(type: "delete.mp3")
+            playSound(type: "deleted.mp3")
             afterDelay(2.0) {
                 hudView.hide()
                 self.delegate?.finishedDeleting()

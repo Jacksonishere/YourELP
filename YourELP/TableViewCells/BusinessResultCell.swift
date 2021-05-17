@@ -54,13 +54,16 @@ class BusinessResultCell: UITableViewCell {
         displayAddress.displayAddress(address: business.location.display_address, separatedBy: "\n")
         addressLabel.text = displayAddress
         
-        if let category = business.categories{
+        if let category = business.categories, category.count != 0{
             if let businessPrice = business.price{
                 categoryLabel.text = "\(businessPrice) · \(category[0].title)"
             }
             else{
                 categoryLabel.text = category[0].title
             }
+        }
+        else{
+            categoryLabel.text = ""
         }
         
         starsImage.image = Reviews.dict[business.rating]!

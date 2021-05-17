@@ -824,11 +824,42 @@
                     <connections>
                         <outlet property="tableView" destination="N4f-bF-AVO" id="FhQ-my-kxb"/>
                         <segue destination="P9S-e4-yW5" kind="show" identifier="editReview" id="vDo-CT-4fQ"/>
+                        <segue destination="dgD-68-SUh" kind="show" identifier="showImage" id="z3c-1J-mRm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jk6-en-ySR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1811.594202898551" y="1543.5267857142856"/>
+        </scene>
+        <!--Photo-->
+        <scene sceneID="WLo-OM-FMs">
+            <objects>
+                <viewController storyboardIdentifier="imageFullscreen" modalPresentationStyle="fullScreen" id="dgD-68-SUh" customClass="EnlargeImageViewController" customModule="YourELP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="g7O-yx-Ezb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="U08-Fj-ifj">
+                                <rect key="frame" x="0.0" y="156" width="414" height="503"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ohU-4f-BVY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="U08-Fj-ifj" firstAttribute="leading" secondItem="ohU-4f-BVY" secondAttribute="leading" id="1x5-0K-GrA"/>
+                            <constraint firstItem="ohU-4f-BVY" firstAttribute="trailing" secondItem="U08-Fj-ifj" secondAttribute="trailing" id="6i4-zg-4YN"/>
+                            <constraint firstItem="ohU-4f-BVY" firstAttribute="bottom" secondItem="U08-Fj-ifj" secondAttribute="bottom" constant="100" id="Aki-6G-2Br"/>
+                            <constraint firstItem="U08-Fj-ifj" firstAttribute="top" secondItem="ohU-4f-BVY" secondAttribute="top" constant="100" id="vnK-K3-0LB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Photo" id="nh1-RM-Ndn"/>
+                    <connections>
+                        <outlet property="imageView" destination="U08-Fj-ifj" id="uWX-QQ-9La"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uC3-Yo-qfl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2775" y="1544"/>
         </scene>
         <!--My Reviews-->
         <scene sceneID="C3Z-dm-Mbf">

@@ -28,12 +28,11 @@ public class Review: NSManagedObject {
     func removePhotoFiles(numtoRv numRv:Int) {
         for i in 0 ..< numRv{
             do {
-                let photoURL = photoURLS![numPhotos - i - 1]
-                try FileManager.default.removeItem(at: applicationDocumentsDirectory.appendingPathComponent(photoURL))
-//                imageCache.current.imageDict[photoURL] = nil
+                try FileManager.default.removeItem(at: applicationDocumentsDirectory.appendingPathComponent(photoURLS!.last!))
+                photoURLS!.removeLast()
             }
             catch {
-                print("Error removing file: \(error)")
+                print("no content at URL")
             }
         }
     }

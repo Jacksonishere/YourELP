@@ -111,50 +111,14 @@ extension SearchViewController: UISearchBarDelegate {
                     if let data = data {
                         self.businessResults = self.parse(data: data)
                         
-                        let dispatchQueue = DispatchQueue(label: "anything", attributes: .concurrent)
-                        let dispatchGroup = DispatchGroup()
-                        
-                        
-                        var i = 0
-                        let startTime = CFAbsoluteTimeGetCurrent()
-                        dispatchQueue.async {
-                            for business in self.businessResults{
-                                print("entering \(i)")
-                                dispatchGroup.enter()
-                                self.calculateDistance(to: business.coordinates.coordinate){ dist in
-                                    self.distanceDict[business.id] = dist
-                                    print("leaving \(i)")
-                                    dispatchGroup.leave()
-                                }
-                                i += 1
+                        for business in self.businessResults{
+                            self.calculateDistance(to: business.coordinates.coordinate){ dist in
+                                self.distanceDict[business.id] = dist
                             }
                         }
-//                        let startTime = CFAbsoluteTimeGetCurrent()
-//                        for business in self.businessResults{
-//                            print("entering \(i)")
-//                            dispatchQueue.async {
-//                                let myi = i
-//                                dispatchGroup.enter()
-//                                self.calculateDistance(to: business.coordinates.coordinate){
-//                                    dist in
-//                                    DispatchQueue.main.async {
-//                                        self.distanceDict[business.id] = dist
-//                                    }
-//
-//                                    print("leaving \(myi)")
-//                                    dispatchGroup.leave()
-//                                }
-//                            }
-//                            i += 1
-//                        }
-                        
-                        dispatchGroup.notify(queue: dispatchQueue){
-                            DispatchQueue.main.async {
-                                print(CFAbsoluteTimeGetCurrent() - startTime, "total time")
-                                print("finished calculating stuff")
-                                self.isLoading = false
-                                self.tableView.reloadData()
-                            }
+                        DispatchQueue.main.async {
+                            self.isLoading = false
+                            self.tableView.reloadData()
                         }
                         return
                     }

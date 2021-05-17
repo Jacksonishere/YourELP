@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		36313E872651BFB10021BC42 /* success.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36313E862651BFB10021BC42 /* success.mp3 */; };
 		36313E8B2651BFC70021BC42 /* deleted.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 36313E8A2651BFC70021BC42 /* deleted.mp3 */; };
+		36313E8F2651DAE70021BC42 /* EnlargeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36313E8E2651DAE70021BC42 /* EnlargeImageViewController.swift */; };
 		365A53A0263FA110000F6F4F /* MyReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A539F263FA110000F6F4F /* MyReviewCell.swift */; };
 		366954B22638D7B500A71D6C /* BusinessResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366954B12638D7B500A71D6C /* BusinessResultCell.swift */; };
 		366954B52638DEE300A71D6C /* UIImageView+DownloadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366954B42638DEE300A71D6C /* UIImageView+DownloadImage.swift */; };
@@ -43,6 +44,7 @@
 		12A70B53793F1D4B5C5241D2 /* Pods-YourELP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YourELP.debug.xcconfig"; path = "Target Support Files/Pods-YourELP/Pods-YourELP.debug.xcconfig"; sourceTree = "<group>"; };
 		36313E862651BFB10021BC42 /* success.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = success.mp3; sourceTree = "<group>"; };
 		36313E8A2651BFC70021BC42 /* deleted.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = deleted.mp3; sourceTree = "<group>"; };
+		36313E8E2651DAE70021BC42 /* EnlargeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnlargeImageViewController.swift; sourceTree = "<group>"; };
 		365A539F263FA110000F6F4F /* MyReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReviewCell.swift; sourceTree = "<group>"; };
 		366954B12638D7B500A71D6C /* BusinessResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessResultCell.swift; sourceTree = "<group>"; };
 		366954B42638DEE300A71D6C /* UIImageView+DownloadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadImage.swift"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				36B64189263BA387006620AC /* AddReviewViewController.swift */,
 				36B64198263C6F36006620AC /* MyReviewsViewController.swift */,
 				3684D1FF264EDCA600B36A73 /* InitialViewController.swift */,
+				36313E8E2651DAE70021BC42 /* EnlargeImageViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				36EAE993263B3B3400CBE716 /* YelpReview.swift in Sources */,
 				36B64199263C6F36006620AC /* MyReviewsViewController.swift in Sources */,
 				36B64184263B6548006620AC /* MapCell.swift in Sources */,
+				36313E8F2651DAE70021BC42 /* EnlargeImageViewController.swift in Sources */,
 				366954B9263904AB00A71D6C /* yelpStars.swift in Sources */,
 				36B9F828262F6E460010BFCD /* SearchViewController.swift in Sources */,
 				36B6418E263C588E006620AC /* SelfReviews.xcdatamodeld in Sources */,

@@ -11,8 +11,14 @@ import CoreData
 import CoreLocation
 import AVFoundation
 
-class MyReviewsViewController: UIViewController{
-
+class MyReviewsViewController: UIViewController, MyReviewCellDelegate{
+    func enlargeImage(forImage: UIImage) {
+        performSegue(withIdentifier: "showImage", sender: forImage)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
     var managedObjectContext: NSManagedObjectContext!
     var privateReviews = [Review]()
     var distanceDict = [String:Double]()
@@ -57,7 +63,7 @@ class MyReviewsViewController: UIViewController{
 
         fetchRequest.fetchBatchSize = 20
 
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "category", cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.managedObjectContext, sectionNameKeyPath: "category", cacheName: "MyReviews")
 
         fetchedResultsController.delegate = self
         return fetchedResultsController
@@ -112,6 +118,7 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "MyReviewCell", for: indexPath) as! MyReviewCell
             cell.configure(forReview: myReview, forDistance: distanceDict[myReview.businessID]!)
             cell.selectionStyle = .none
+            cell.delegate = self
             return cell
         }
     }
@@ -182,6 +189,11 @@ extension MyReviewsViewController: UITableViewDelegate, UITableViewDataSource{
                 vc.reviewtoEdit = editReview as? Review
                 vc.managedObjectContext = managedObjectContext
             }
+        }
+        else if segue.identifier == "showImage"{
+            let vc = segue.destination as! EnlargeImageViewController
+            vc.showImage = sender as? UIImage
+            
         }
     }
 }

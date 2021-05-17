@@ -8,6 +8,10 @@
 import UIKit
 import Cosmos
 
+protocol MyReviewCellDelegate: class {
+    func enlargeImage(forImage: UIImage)
+}
+
 class MyReviewCell: UITableViewCell {
 
     @IBOutlet weak var businessName: UILabel!
@@ -21,6 +25,8 @@ class MyReviewCell: UITableViewCell {
         print("destroying cell")
     }
     var reviewImages = [UIImage]()
+    
+    weak var delegate:MyReviewCellDelegate?
     
     override func prepareForReuse() {
         reviewImages = []
@@ -75,5 +81,9 @@ extension MyReviewCell: UICollectionViewDelegate, UICollectionViewDataSource{
         return cell
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.enlargeImage(forImage: reviewImages[indexPath.row])
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
 }
